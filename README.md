@@ -1,6 +1,6 @@
 # 2025fall-cs201: DS Alog （数据结构与算法）
 
-Updated 2203 GMT+8 Jul 25 2025. 2025 summer, Complied by Hongfei Yan  
+Updated 2253 GMT+8 Jul 25 2025. 2025 summer, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025fall-cs201/
 
 
@@ -12,9 +12,9 @@ https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_pr
 https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md  
 https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
 
-从零构建大模型 Build a Large Language Model (From Scratch) (Sebastian Raschka)  
-算法笔记.胡凡 曾磊  
 Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
+AI教材：从零构建大模型 Build a Large Language Model (From Scratch) (Sebastian Raschka)  
+算法笔记.胡凡 曾磊  
 算法导论 第3版  (Thmos.H.Cormen ,Charles E. Leiserson etc.)
 
 
