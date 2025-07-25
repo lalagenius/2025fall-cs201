@@ -1,4 +1,4 @@
-# 2025spring-cs201: DS Alog （数据结构与算法）
+# 2025fall-cs201: DS Alog （数据结构与算法）
 
 Updated 2203 GMT+8 Jul 25 2025. 2025 summer, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025fall-cs201/
