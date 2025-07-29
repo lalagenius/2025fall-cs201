@@ -1,6 +1,8 @@
 # 2025fall-cs201: DS Alog （数据结构与算法）
 
-Updated 2253 GMT+8 Jul 25 2025. 2025 summer, Complied by Hongfei Yan  
+Updated 1142 GMT+8 Jul 29 2025. 
+
+2025 summer, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025fall-cs201/
 
 
@@ -14,6 +16,9 @@ https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
 
 Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
 AI教材：从零构建大模型 Build a Large Language Model (From Scratch) (Sebastian Raschka)  
+
+> 根据学校最新通知，课程增加Al相关内容。期末<mark>笔试以AI知识内容为重点</mark>，重点覆盖《Test Yourself On Build a Large Language》一书中的关键问题与概念
+
 算法笔记.胡凡 曾磊  
 算法导论 第3版  (Thmos.H.Cormen ,Charles E. Leiserson etc.)
 
@@ -44,6 +49,3 @@ AI教材：从零构建大模型 Build a Large Language Model (From Scratch) (Se
 2. 完成课程组精选 161 道题目
    https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
    题目按照难度分为三类：E（Easy 简单），M（Medium 中等），T（Tough 挑战）
-
-查阅往年笔试题目，了解笔试风格与重点，做好充分准备：
- https://github.com/GMyhf/2025spring-cs201/blob/main/written_exam_DSA-B.md
