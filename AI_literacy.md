@@ -1,6 +1,6 @@
 # 人工智能概览
 
-Updated 1624 GMT+8 Aug 12 2025
+Updated 1800 GMT+8 Aug 12 2025
 
 2025 summer, Complied by Hongfei Yan
 
@@ -1099,6 +1099,318 @@ if __name__ == "__main__":
 
 
 
+> 在window机器，用 WSL 安装 Ubuntu，用cpu运行
+>
+> 环境设置，可以参考：https://github.com/GMyhf/2025fall-cs201/blob/main/LLM/Build%20LLM%20Setup_window.md
+>
+> ```
+> $ CUDA_VISIBLE_DEVICES="" python mnist_resnet18.py
+> ```
+>
+> Windows 10 专业版，版本号22H2，安装日期 2021/6/12
+>
+> 处理器 Intel(R)Xeon(R)W-2223 CPU @ 3.60GHz 3.60GHz
+> 机带 RAM 16.0 GB (15.7 GB 可用)
+> 系统类型 64 位操作系统, 基于 x64 的处理器
+>
+> ```
+> 100%|████████████| 9.91M/9.91M [00:06<00:00, 1.52MB/s]
+> 100%|████████████| 28.9k/28.9k [00:00<00:00, 133kB/s]
+> 100%|████████████| 1.65M/1.65M [00:01<00:00, 905kB/s]
+> 100%|████████████| 4.54k/4.54k [00:00<00:00, 9.23MB/s]
+> Using device: cpu
+> Starting training with early stopping...
+> /home/yhf/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py:666: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+>   warnings.warn(warn_msg)
+> [1,   100] loss: 0.099
+> [1,   200] loss: 0.072
+> [1,   300] loss: 0.038
+> [1,   400] loss: 0.079
+> [1] Avg Loss: 0.149
+> [2,   100] loss: 0.028
+> [2,   200] loss: 0.010
+> [2,   300] loss: 0.012
+> [2,   400] loss: 0.112
+> [2] Avg Loss: 0.053
+> [3,   100] loss: 0.017
+> [3,   200] loss: 0.032
+> [3,   300] loss: 0.009
+> [3,   400] loss: 0.027
+> [3] Avg Loss: 0.037
+> [4,   100] loss: 0.024
+> [4,   200] loss: 0.087
+> [4,   300] loss: 0.010
+> [4,   400] loss: 0.045
+> [4] Avg Loss: 0.032
+> [5,   100] loss: 0.034
+> [5,   200] loss: 0.009
+> [5,   300] loss: 0.019
+> [5,   400] loss: 0.038
+> [5] Avg Loss: 0.026
+> [6,   100] loss: 0.032
+> [6,   200] loss: 0.046
+> [6,   300] loss: 0.037
+> [6,   400] loss: 0.039
+> [6] Avg Loss: 0.023
+> [7,   100] loss: 0.038
+> [7,   200] loss: 0.018
+> [7,   300] loss: 0.002
+> [7,   400] loss: 0.079
+> [7] Avg Loss: 0.022
+> [8,   100] loss: 0.002
+> [8,   200] loss: 0.005
+> [8,   300] loss: 0.044
+> [8,   400] loss: 0.004
+> [8] Avg Loss: 0.018
+> [9,   100] loss: 0.016
+> [9,   200] loss: 0.009
+> [9,   300] loss: 0.030
+> [9,   400] loss: 0.014
+> [9] Avg Loss: 0.015
+> [10,   100] loss: 0.004
+> [10,   200] loss: 0.023
+> [10,   300] loss: 0.027
+> [10,   400] loss: 0.023
+> [10] Avg Loss: 0.017
+> No improvement. Patience: 1/10
+> [11,   100] loss: 0.025
+> [11,   200] loss: 0.034
+> [11,   300] loss: 0.012
+> [11,   400] loss: 0.016
+> [11] Avg Loss: 0.014
+> [12,   100] loss: 0.004
+> [12,   200] loss: 0.002
+> [12,   300] loss: 0.014
+> [12,   400] loss: 0.005
+> [12] Avg Loss: 0.013
+> [13,   100] loss: 0.002
+> [13,   200] loss: 0.022
+> [13,   300] loss: 0.019
+> [13,   400] loss: 0.003
+> [13] Avg Loss: 0.013
+> [14,   100] loss: 0.010
+> [14,   200] loss: 0.004
+> [14,   300] loss: 0.028
+> [14,   400] loss: 0.018
+> [14] Avg Loss: 0.013
+> No improvement. Patience: 1/10
+> [15,   100] loss: 0.009
+> [15,   200] loss: 0.002
+> [15,   300] loss: 0.118
+> [15,   400] loss: 0.011
+> [15] Avg Loss: 0.012
+> [16,   100] loss: 0.025
+> [16,   200] loss: 0.001
+> [16,   300] loss: 0.058
+> [16,   400] loss: 0.005
+> [16] Avg Loss: 0.011
+> [17,   100] loss: 0.000
+> [17,   200] loss: 0.008
+> [17,   300] loss: 0.015
+> [17,   400] loss: 0.034
+> [17] Avg Loss: 0.013
+> No improvement. Patience: 1/10
+> [18,   100] loss: 0.002
+> [18,   200] loss: 0.015
+> [18,   300] loss: 0.001
+> [18,   400] loss: 0.001
+> [18] Avg Loss: 0.010
+> [19,   100] loss: 0.011
+> [19,   200] loss: 0.011
+> [19,   300] loss: 0.001
+> [19,   400] loss: 0.010
+> [19] Avg Loss: 0.011
+> No improvement. Patience: 1/10
+> [20,   100] loss: 0.013
+> [20,   200] loss: 0.000
+> [20,   300] loss: 0.006
+> [20,   400] loss: 0.001
+> [20] Avg Loss: 0.010
+> No improvement. Patience: 2/10
+> [21,   100] loss: 0.008
+> [21,   200] loss: 0.005
+> [21,   300] loss: 0.036
+> [21,   400] loss: 0.047
+> [21] Avg Loss: 0.012
+> No improvement. Patience: 3/10
+> [22,   100] loss: 0.001
+> [22,   200] loss: 0.006
+> [22,   300] loss: 0.003
+> [22,   400] loss: 0.001
+> [22] Avg Loss: 0.011
+> No improvement. Patience: 4/10
+> [23,   100] loss: 0.001
+> [23,   200] loss: 0.006
+> [23,   300] loss: 0.001
+> [23,   400] loss: 0.002
+> [23] Avg Loss: 0.010
+> No improvement. Patience: 5/10
+> [24,   100] loss: 0.008
+> [24,   200] loss: 0.010
+> [24,   300] loss: 0.047
+> [24,   400] loss: 0.056
+> [24] Avg Loss: 0.009
+> [25,   100] loss: 0.009
+> [25,   200] loss: 0.012
+> [25,   300] loss: 0.002
+> [25,   400] loss: 0.027
+> [25] Avg Loss: 0.010
+> No improvement. Patience: 1/10
+> [26,   100] loss: 0.017
+> [26,   200] loss: 0.000
+> [26,   300] loss: 0.011
+> [26,   400] loss: 0.003
+> [26] Avg Loss: 0.012
+> No improvement. Patience: 2/10
+> [27,   100] loss: 0.024
+> [27,   200] loss: 0.004
+> [27,   300] loss: 0.009
+> [27,   400] loss: 0.019
+> [27] Avg Loss: 0.009
+> No improvement. Patience: 3/10
+> [28,   100] loss: 0.004
+> [28,   200] loss: 0.005
+> [28,   300] loss: 0.029
+> [28,   400] loss: 0.029
+> [28] Avg Loss: 0.011
+> No improvement. Patience: 4/10
+> [29,   100] loss: 0.031
+> [29,   200] loss: 0.008
+> [29,   300] loss: 0.022
+> [29,   400] loss: 0.003
+> [29] Avg Loss: 0.009
+> [30,   100] loss: 0.055
+> [30,   200] loss: 0.009
+> [30,   300] loss: 0.002
+> [30,   400] loss: 0.010
+> [30] Avg Loss: 0.010
+> No improvement. Patience: 1/10
+> [31,   100] loss: 0.001
+> [31,   200] loss: 0.006
+> [31,   300] loss: 0.019
+> [31,   400] loss: 0.005
+> [31] Avg Loss: 0.010
+> No improvement. Patience: 2/10
+> [32,   100] loss: 0.001
+> [32,   200] loss: 0.007
+> [32,   300] loss: 0.001
+> [32,   400] loss: 0.001
+> [32] Avg Loss: 0.009
+> No improvement. Patience: 3/10
+> [33,   100] loss: 0.000
+> [33,   200] loss: 0.004
+> [33,   300] loss: 0.001
+> [33,   400] loss: 0.001
+> [33] Avg Loss: 0.009
+> [34,   100] loss: 0.002
+> [34,   200] loss: 0.003
+> [34,   300] loss: 0.020
+> [34,   400] loss: 0.002
+> [34] Avg Loss: 0.010
+> No improvement. Patience: 1/10
+> [35,   100] loss: 0.002
+> [35,   200] loss: 0.000
+> [35,   300] loss: 0.019
+> [35,   400] loss: 0.015
+> [35] Avg Loss: 0.009
+> No improvement. Patience: 2/10
+> [36,   100] loss: 0.002
+> [36,   200] loss: 0.080
+> [36,   300] loss: 0.001
+> [36,   400] loss: 0.010
+> [36] Avg Loss: 0.012
+> No improvement. Patience: 3/10
+> [37,   100] loss: 0.016
+> [37,   200] loss: 0.028
+> [37,   300] loss: 0.004
+> [37,   400] loss: 0.007
+> [37] Avg Loss: 0.008
+> [38,   100] loss: 0.001
+> [38,   200] loss: 0.001
+> [38,   300] loss: 0.002
+> [38,   400] loss: 0.004
+> [38] Avg Loss: 0.008
+> [39,   100] loss: 0.001
+> [39,   200] loss: 0.008
+> [39,   300] loss: 0.002
+> [39,   400] loss: 0.003
+> [39] Avg Loss: 0.008
+> No improvement. Patience: 1/10
+> [40,   100] loss: 0.001
+> [40,   200] loss: 0.008
+> [40,   300] loss: 0.006
+> [40,   400] loss: 0.003
+> [40] Avg Loss: 0.010
+> No improvement. Patience: 2/10
+> [41,   100] loss: 0.006
+> [41,   200] loss: 0.001
+> [41,   300] loss: 0.006
+> [41,   400] loss: 0.006
+> [41] Avg Loss: 0.009
+> No improvement. Patience: 3/10
+> [42,   100] loss: 0.004
+> [42,   200] loss: 0.005
+> [42,   300] loss: 0.010
+> [42,   400] loss: 0.002
+> [42] Avg Loss: 0.009
+> No improvement. Patience: 4/10
+> [43,   100] loss: 0.001
+> [43,   200] loss: 0.002
+> [43,   300] loss: 0.021
+> [43,   400] loss: 0.001
+> [43] Avg Loss: 0.008
+> No improvement. Patience: 5/10
+> [44,   100] loss: 0.046
+> [44,   200] loss: 0.002
+> [44,   300] loss: 0.023
+> [44,   400] loss: 0.008
+> [44] Avg Loss: 0.010
+> No improvement. Patience: 6/10
+> [45,   100] loss: 0.021
+> [45,   200] loss: 0.001
+> [45,   300] loss: 0.006
+> [45,   400] loss: 0.001
+> [45] Avg Loss: 0.011
+> No improvement. Patience: 7/10
+> [46,   100] loss: 0.008
+> [46,   200] loss: 0.006
+> [46,   300] loss: 0.002
+> [46,   400] loss: 0.049
+> [46] Avg Loss: 0.010
+> No improvement. Patience: 8/10
+> [47,   100] loss: 0.001
+> [47,   200] loss: 0.015
+> [47,   300] loss: 0.001
+> [47,   400] loss: 0.026
+> [47] Avg Loss: 0.008
+> No improvement. Patience: 9/10
+> [48,   100] loss: 0.002
+> [48,   200] loss: 0.002
+> [48,   300] loss: 0.002
+> [48,   400] loss: 0.004
+> [48] Avg Loss: 0.010
+> No improvement. Patience: 10/10
+> Early stopping triggered.
+> ✅ Training completed in 75.11 minutes.
+> Accuracy on test images: 99.35%
+> Accuracy of 0    : 99.59%
+> Accuracy of 1    : 99.91%
+> Accuracy of 2    : 99.22%
+> Accuracy of 3    : 99.50%
+> Accuracy of 4    : 99.59%
+> Accuracy of 5    : 99.22%
+> Accuracy of 6    : 99.37%
+> Accuracy of 7    : 99.22%
+> Accuracy of 8    : 99.38%
+> Accuracy of 9    : 98.41%
+> /home/yhf/NNCode/mnist_resnet18.py:142: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+>   plt.show()
+> ```
+>
+> 
+
+
+
 ## 4.5 实例：CIFAR-10图像分类
 
 CIFAR-10数据集包含60000张32×32彩色图像，共10个类别。由于图像更复杂，我们继续使用更强的模型（如ResNet18或ResNet34）进行训练。流程类似MNIST，但输入通道为3。训练后，现代架构通常能达到70%–90%的测试准确率（取决于网络深度和训练策略）。该实验帮助学生理解小型彩色图像集上的卷积网络训练要点（如数据增强、学习率调整）。
@@ -1906,6 +2218,16 @@ if __name__ == '__main__':
 >
 
 
+
+# 5. 运行《从零构建大模型》代码
+
+《从零构建大模型》代码，https://github.com/rasbt/LLMs-from-scratch
+
+Build a Large Language Model (From Scratch)
+
+可以在本地 mac 或者 window 运行，配置方法方法如： ...Setup_....md。
+
+https://github.com/GMyhf/2025fall-cs201/tree/main/LLM
 
 
 
