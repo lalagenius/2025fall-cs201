@@ -1,6 +1,6 @@
 # 人工智能概览
 
-Updated 2303 GMT+8 Jul 27 2025
+Updated 1624 GMT+8 Aug 12 2025
 
 2025 summer, Complied by Hongfei Yan
 
@@ -467,6 +467,18 @@ if __name__ == "__main__":
     main()
 
 ```
+
+> 如果无法使用GPU
+>
+> **在运行时强制使用CPU调试**
+>
+> ```
+> CUDA_VISIBLE_DEVICES="" python iris_neural_network.py
+> ```
+>
+> 这样禁用CUDA，使用CPU。
+
+
 
 > 云虚拟机运行结果：
 >
