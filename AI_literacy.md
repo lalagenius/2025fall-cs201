@@ -785,6 +785,18 @@ if __name__ == "__main__":
 
 典型结果：使用ResNet18能在MNIST上达到99%以上的准确率。该任务展示了深度卷积网络在图像分类中的强大能力。
 
+> 如果无法使用GPU
+> 
+> **在运行时强制使用CPU调试**
+> 
+> ```
+>  CUDA_VISIBLE_DEVICES="" python mnist_resnet18.py
+> ```
+> 
+> 这样禁用CUDA，使用CPU。
+>
+> 
+
 
 
 > 运行机器
