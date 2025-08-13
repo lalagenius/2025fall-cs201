@@ -108,6 +108,130 @@ Codename:       noble
 
 
 
+# WSL 安装的 Ubuntu 移动到 D 盘
+
+WSL 中安装 Ubuntu 会默认安装到 C 盘的用户数据目录下，在后续使用过程中会导致占用空间越来越大，可以把它迁移到 D 盘。
+
+参考：https://mp.weixin.qq.com/s/p7ByxGLexvTbToilldiSjg?scene=1
+
+先在 D 盘创建好文件夹：一个用于存放导出的备份文件，一个用于存放最终的 WSL 实例。
+
+```
+D:\WSL\images
+D:\WSL\instances
+```
+
+
+
+在 PowerShell 中运行以下命令，查看安装的发行版的完整名称以备用：
+
+```
+wsl --list --verbose
+```
+
+运行结果如下：
+
+```
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+```
+
+
+
+**导出备份**
+
+在 PowerShell 中运行以下命令，可以把已安装的发行版导出到指定的备份目录：
+
+```
+wsl --export Ubuntu-22.04 D:\WSL\images\ubuntu.tar
+```
+
+运行结果如下：
+
+```
+正在导出，这可能需要几分钟时间。 (10995 MB)
+
+操作成功完成。
+```
+
+
+
+**卸载已安装的发行版**
+
+在 PowerShell 中运行以下命令，可以把已安装的发行版从 C 盘中删除：
+
+```
+wsl --unregister Ubuntu
+```
+
+运行结果如下：
+
+```
+正在注销。
+操作成功完成。
+```
+
+
+
+再次执行查看版本的命令，列表中已经没有了：
+
+```
+wsl -l -v
+```
+
+运行结果如下：
+
+```
+适用于 Linux 的 Windows 子系统没有已安装的分发。
+可通过安装包含以下说明的分发来解决此问题：
+
+使用“wsl.exe --list --online' ”列出可用的分发
+和 “wsl.exe --install <Distro>” 进行安装。
+```
+
+
+
+**导入备份**
+
+在 PowerShell 中运行以下命令，可以把已导出的备份重新导入到指定目录：
+
+```
+wsl --import Ubuntu D:\WSL\instances\Ubuntu D:\WSL\images\ubuntu.tar
+```
+
+运行结果如下：
+
+```
+操作成功完成。
+```
+
+
+
+再次执行命令查看版本，可以看到 Ubuntu 又装回来了：
+
+```
+wsl -l -v
+```
+
+运行结果如下：
+
+```
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+```
+
+
+
+并且 D 盘对应目录下也有了文件：
+
+```
+D:\WSL\instances\Ubuntu\ext4.vhdx
+```
+
+
+
+
+
 # Build LLM 环境 Setup
 
 ## Create a virtual environment
