@@ -1,6 +1,6 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-08-28 23:55 GMT+8*  
+*Updated 2025-08-30 10:46 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
 题解在 
@@ -10,7 +10,7 @@
 [2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md)
 
 <!--
-| 1122 |       |       | - |          |
+|  |       |       | - |          |
 -->
 
 
@@ -19,7 +19,9 @@
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
-| 0829 | 01321:棋盘问题  | backtracking    | Medium | http://cs101.openjudge.cn/pctbook/M01321/          |
+| 0830 | 04123:马走日      | backtracking      | Medium | http://cs101.openjudge.cn/pctbook/M04123          |
+| 0830 | 11.盛最多水的容器 | greedy, two pointers  | Medium | https://leetcode.cn/problems/container-with-most-water/          |
+| 0829 | 01321:棋盘问题  | backtracking    | Medium | http://cs101.openjudge.cn/pctbook/M01321          |
 | 0829 | 1299.将每个元素替换为右侧最大元素 | dp   | Easy | https://leetcode.cn/problems/replace-elements-with-greatest-element-on-right-side/          |
 | 0828 | 08210:河中跳房  | binary search, greedy  | Medium  | http://cs101.openjudge.cn/pctbook/M08210                         |
 | 0828 | 35.搜索插入位置 | binary search   | Easy | https://leetcode.cn/problems/search-insert-position/                       |
