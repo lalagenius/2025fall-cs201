@@ -23,7 +23,7 @@
 | 0830 | 11.盛最多水的容器 | greedy, two pointers  | Medium | https://leetcode.cn/problems/container-with-most-water/          |
 | 0829 | 01321:棋盘问题  | backtracking    | Medium | http://cs101.openjudge.cn/pctbook/M01321          |
 | 0829 | 1299.将每个元素替换为右侧最大元素 | dp   | Easy | https://leetcode.cn/problems/replace-elements-with-greatest-element-on-right-side/          |
-| 0828 | 08210:河中跳房  | binary search, greedy  | Medium  | http://cs101.openjudge.cn/pctbook/M08210                         |
+| 0828 | 08210:河中跳房子  | binary search, greedy  | Medium  | http://cs101.openjudge.cn/pctbook/M08210                         |
 | 0828 | 35.搜索插入位置 | binary search   | Easy | https://leetcode.cn/problems/search-insert-position/                       |
 | 0827 | 155.最小栈 | OOP, 辅助栈 | Medium | https://leetcode.cn/problems/min-stack/ |
 | 0827 | 27300:模型整理 | sortings, AI | Medium | http://cs101.openjudge.cn/pctbook/M27300 |
