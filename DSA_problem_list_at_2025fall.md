@@ -1,6 +1,6 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-08-31 20:00 GMT+8*  
+*Updated 2025-09-01 10:57 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
 题解在 
@@ -19,6 +19,8 @@
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0902 | 06640: 倒排索引    | data structures, IR | Medium | http://cs101.openjudge.cn/practice/06640   |
+| 0902 | 1078.Bigram分词    | strings, NLP    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
 | 0901 | 03151: Pots       | bfs    | Medium    | http://cs101.openjudge.cn/practice/03151      | 
 | 0901 | 121.买卖股票的最佳时机   | dp       | Easy  | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/          |
 | 0831 | 04067:回文数字    | queue    | Easy | http://cs101.openjudge.cn/pctbook/E04067          |
