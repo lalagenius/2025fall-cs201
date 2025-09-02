@@ -1,6 +1,6 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-09-01 10:57 GMT+8*  
+*Updated 2025-09-03 00:20 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
 题解在 
@@ -19,6 +19,8 @@
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0903 | 04093: 倒排索引查询| data structures, IR | Tough | http://cs101.openjudge.cn/practice/04093/     | 
+| 0903 | 2906.构造乘积矩阵  | matrices, prefix sum | Medium | https://leetcode.cn/problems/construct-product-matrix/      | 
 | 0902 | 06640: 倒排索引    | data structures, IR | Medium | http://cs101.openjudge.cn/practice/06640   |
 | 0902 | 1078.Bigram分词    | strings, NLP    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
 | 0901 | 03151: Pots       | bfs    | Medium    | http://cs101.openjudge.cn/practice/03151      | 
