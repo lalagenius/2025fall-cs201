@@ -1,6 +1,6 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-09-03 00:20 GMT+8*  
+*Updated 2025-09-04 00:23 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
 题解在 
@@ -19,6 +19,8 @@
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0904 | 27256: 当前队列中位数  | data structures, OOP    | Tough    | http://cs101.openjudge.cn/practice/27256/      | |
+| 0904 | 100576.提取至多K个元素的最大总和     | data structures | Medium | https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/ |
 | 0903 | 04093: 倒排索引查询| data structures, IR | Tough | http://cs101.openjudge.cn/practice/04093/     | 
 | 0903 | 2906.构造乘积矩阵  | matrices, prefix sum | Medium | https://leetcode.cn/problems/construct-product-matrix/      | 
 | 0902 | 06640: 倒排索引    | data structures, IR | Medium | http://cs101.openjudge.cn/practice/06640   |
