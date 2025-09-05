@@ -1,6 +1,6 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-09-05 00:02 GMT+8*  
+*Updated 2025-09-05 19:52 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
 题解在 
@@ -19,6 +19,8 @@
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0906 | 04140: 方程求解   | 牛顿迭代法, AI  | Medium | http://cs101.openjudge.cn/practice/04140/      | 
+| 0906 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      | 
 | 0905 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/pctbook/M01328/      | 
 | 0905 | 56.合并区间     | greedy    | Easy    | https://leetcode.cn/problems/merge-intervals/     |
 | 0904 | 27256: 当前队列中位数  | data structures, OOP    | Tough    | http://cs101.openjudge.cn/practice/27256/      | |
