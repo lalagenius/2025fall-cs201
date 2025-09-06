@@ -1,6 +1,6 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-09-05 19:52 GMT+8*  
+*Updated 2025-09-06 21:59 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
 题解在 
@@ -19,6 +19,8 @@
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0907 | 18161:矩阵运算(先乘再加) | matrices, OOP, AI    | Easy  | http://cs101.openjudge.cn/pctbook/E18161/      | 
+| 0907 | 2502.设计内存分配器 | OOP, implementation  | Medium    | https://leetcode.cn/problems/design-memory-allocator/     | 
 | 0906 | 04140: 方程求解   | 牛顿迭代法, AI  | Medium | http://cs101.openjudge.cn/practice/04140/      | 
 | 0906 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      | 
 | 0905 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/pctbook/M01328/      | 
