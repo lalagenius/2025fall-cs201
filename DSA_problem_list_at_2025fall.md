@@ -1,13 +1,14 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-09-06 21:59 GMT+8*  
+*Updated 2025-09-07 13:58 GMT+8*  
  *Compiled by Hongfei Yan (2020 Fall)*  
 
-题解在 
-[2020fall_cs101.openjudge.cn_problems.md](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md),
-[2020fall_Codeforces_problems.md](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md),
-[sunnywhy_problems.md](https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md),
-[2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md)
+题解在  
+[2024spring_dsa_problems](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md)  
+[2020fall_cs101.openjudge.cn_problems](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md),
+[2020fall_Codeforces_problems](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md),
+[sunnywhy_problems](https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md),
+[2024fall_LeetCode_problems](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md)
 
 <!--
 |  |       |       | - |          |
