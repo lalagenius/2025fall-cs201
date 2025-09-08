@@ -4,11 +4,11 @@
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
-[2024spring_dsa_problems](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md),
-[2020fall_cs101.openjudge.cn_problems](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md),
-[2020fall_Codeforces_problems](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md),
+[dsa_problems](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md),
+[cs101.openjudge.cn_problems](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md),
+[Codeforces_problems](https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md),
 [sunnywhy_problems](https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md),
-[2024fall_LeetCode_problems](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md)
+[LeetCode_problems](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md)
 
 <!--
 |  |       |       | - |          |
