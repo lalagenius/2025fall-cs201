@@ -1,7 +1,7 @@
 # 2025fall 数算（DS Algo）每日选作
 
-*Updated 2025-09-07 20:10 GMT+8*  
- *Compiled by Hongfei Yan (2020 Fall)*  
+*Updated 2025-09-08 10:14 GMT+8*  *Compiled by Hongfei Yan (2020 Fall)*  
+https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
 [2024spring_dsa_problems](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md),
