@@ -1,14 +1,15 @@
-#  20250908-Week1-虚拟机，Shell&大语言模型
+#  20250908-Week1-虚拟机，Shell&本地大语言模型
 
-Updated 1529 GMT+8 Sep 8 2025
+*Updated 2025-09-08 08:59 GMT+8*  
+ *Compiled by Hongfei Yan (2025 Fall)*    
 
-2025 fall, Complied by Hongfei Yan
+https://github.com/GMyhf/2025fall-cs201/
 
 
 
 logs：
 
->  课程安排：https://github.com/GMyhf/2025fall-cs201/
+>  课程材料
 >
 >  <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250908171234533.png" alt="image-20250908171234533" style="zoom: 33%;" />
 >
@@ -1694,7 +1695,7 @@ if __name__ == "__main__":
 
 
 
-# 3 大语言模型安装和测试
+# 3 本地大语言模型安装和测试
 
 在本地环境部署大语言模型（LLM）并进行测试。可以选择使用图形界面工具如 https://lmstudio.ai 成部署工作。
 
