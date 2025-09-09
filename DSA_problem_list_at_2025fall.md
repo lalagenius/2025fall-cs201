@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-09 13:07 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-10 23:07 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0910 | 23558:有界的深度优先搜索     | dfs, graph, AI | Medium | http://cs101.openjudge.cn/pctbook/M23558/      | 
+| 0910 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      | 
 | 0909 | 02524:宗教信仰     | disjoint set   | Medium    | http://cs101.openjudge.cn/pctbook/M02524/      | 
 | 0909 | 542.01 矩阵     | dp    | Medium    | https://leetcode-cn.com/problems/01-matrix/     | 
 | 0908 | 01088: 滑雪 | dp    | Medium    | http://cs101.openjudge.cn/pctbook/M01088      | 
