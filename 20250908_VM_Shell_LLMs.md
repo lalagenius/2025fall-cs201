@@ -1,6 +1,6 @@
 #  20250908-Week1-虚拟机，Shell&本地大语言模型
 
-*Updated 2025-09-08 08:59 GMT+8*  
+*Updated 2025-09-11 13:19 GMT+8*  
  *Compiled by Hongfei Yan (2025 Fall)*    
 
 https://github.com/GMyhf/2025fall-cs201/
@@ -9,6 +9,8 @@ https://github.com/GMyhf/2025fall-cs201/
 
 logs：
 
+>  2025/9/11 删除了春季的云虚拟机，重新创建，增加 1.4节 “在云虚拟机部署《从零构建大模型》代码”
+>
 >  课程材料
 >
 >  <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250908171234533.png" alt="image-20250908171234533" style="zoom: 33%;" />
@@ -210,6 +212,11 @@ if __name__ == "__main__":
 
 - **clab.pku.edu.cn**：CLab 是服务北大师生的云计算平台。提供基于云的虚拟实验室环境，供学生和研究人员用于教学、学习和科研目的。用户可以通过互联网访问这些虚拟机，执行编程实验、模拟等任务。
 
+  > 北大为每位同学/老师提供了一台云端虚拟机，配置为 4GB 内存、100GB SSD硬盘，可自主领取和使用，可以装Linux系统。https://clab.pku.edu.cn
+  >
+  > 答疑渠道：QQ群 432191140
+  > 问题答案：linuxclub@pku.edu.cn
+
 无论是本地还是云端的虚拟机，它们都提供了灵活的计算资源分配方案，帮助用户测试软件、开发新应用或进行研究工作，而无需投资额外的硬件设施。随着云计算技术的发展，越来越多的服务迁移到了云端，使得用户可以从任何地方访问高性能的计算资源。
 
 #### Q1. 部署虚拟机意义？
@@ -327,15 +334,25 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 
 访问 https://clab.pku.edu.cn
 
-⚠️：要用好云端虚拟机，需要熟悉Linux Shell命令，可以参考 “2 Linux Shell 使用”
+⚠️：要用好云端虚拟机，需要熟悉Linux Shell命令，可以参考之后节内容 `2 Linux Shell 使用`
 
 > 同时打开入门文档，https://clab.pku.edu.cn/docs/getting-started/introduction
 >
 > 我是在mac机器操作
 >
-> 在terminal中，
+> 在terminal中查看是否有公钥，
 >
+> ```
 > ls .ssh/id_ed25519.pub
+> ```
+>
+> 如果没有，运行 
+>
+> ```
+> ssh-keygen -t ed25519
+> ```
+>
+> 
 
 
 
@@ -357,9 +374,7 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 
 从云硬盘启动：是
 
-系统盘：类型SSD，容量40GiB
-
-数据盘：类型SSD，容量60GiB。去掉后面的 随云主机删除
+系统盘：类型SSD，容量100GiB
 
 
 
@@ -379,7 +394,7 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 
 登录凭证：默认值
 
-SSH密钥对: 点“创建密钥”，点“导入密钥”，名称：YouNameOne,  公钥：.ssh/id_ed25519.pub 内容贴进来
+SSH密钥对: 点“导入密钥”，名称：YouNameOne,  公钥：把`.ssh/id_ed25519.pub` 文件中内容贴进来
 
 确认云主机的配置
 
@@ -423,14 +438,14 @@ SSH密钥对: 点“创建密钥”，点“导入密钥”，名称：YouNameOn
 
 ## 1.2 连接云主机 
 
-云主机创建完成后，可以点击云主机的名称进入云主机详情页面。在这里可以看到云主机的状态、IP 地址等信息。我的IP是 `10.129.242.98`。
+云主机创建完成后，可以点击云主机的名称进入云主机详情页面。在这里可以看到云主机的状态、IP 地址等信息。我的IP是 `10.129.242.57`。
 
-<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160843962.png" alt="image-20250216084334218" style="zoom:50%;" />
+![image-20250911132819306](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250911132819306.png)
 
 在terminal中登录云主机
 
 ```
-ssh rocky@10.129.242.98
+ssh rocky@10.129.242.57
 ```
 
 输入yes，回车
@@ -613,140 +628,11 @@ A. 输入密码的时候不显示而已，正常输入就可以，这是为了�
 
 
 
-### 把60GB数据盘挂上来
+## 1.3 增加交换分区，扩展系统的可用内存
 
-此时看不到创建云主机时候设置的容量60Gib的数据盘。
-
-```
-$ df -h
-```
-
-输出示例：
-
-```
-Filesystem      Size  Used Avail Use% Mounted on
-devtmpfs        4.0M     0  4.0M   0% /dev
-tmpfs           1.8G     0  1.8G   0% /dev/shm
-tmpfs           731M  684K  731M   1% /run
-efivarfs        256K   19K  233K   8% /sys/firmware/efi/efivars
-/dev/sda4        39G  7.4G   32G  19% /
-/dev/sda3       936M  257M  680M  28% /boot
-/dev/sda2       100M  7.0M   93M   8% /boot/efi
-tmpfs           366M     0  366M   0% /run/user/1000
-```
+如果4GB内存够用，可以跳过此步。
 
 
-
-使用lsblk检查是否有分区。
-
-```
-$ lsblk
-```
-
-看到了sdb。输出示例：
-
-```
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sda      8:0    0   40G  0 disk 
-├─sda1   8:1    0    2M  0 part 
-├─sda2   8:2    0  100M  0 part /boot/efi
-├─sda3   8:3    0 1000M  0 part /boot
-└─sda4   8:4    0 38.9G  0 part /
-sdb      8:16   0   60G  0 disk 
-sr0     11:0    1  474K  0 rom  
-```
-
-
-
-
-
-**直接挂载整个磁盘**
-
-把 `/dev/sdb` 挂载并访问，下面操作步骤：
-
-**步骤 1: 创建文件系统**
-
-直接在 `/dev/sdb` 上创建一个文件系统（例如 ext4），而不需要创建分区。
-
-```bash
-sudo mkfs.ext4 /dev/sdb
-```
-
-注意：此操作会清除磁盘上的所有数据，请确保该磁盘不包含重要数据或者已经备份。
-
-**步骤 2: 创建挂载点**
-
-选择一个目录作为挂载点，或者创建一个新的目录。
-
-```bash
-sudo mkdir -p /mnt/data
-```
-
-**步骤 3: 挂载磁盘**
-
-使用 `mount` 命令将磁盘挂载到指定的挂载点。
-
-```bash
-sudo mount /dev/sdb /mnt/data
-```
-
-**步骤 4: 验证挂载**
-
-检查是否成功挂载：
-
-```bash
-df -h
-```
-
-输出示例：
-
-```
-Filesystem      Size  Used Avail Use% Mounted on
-...
-/dev/sdb         59G   24M   56G   1% /mnt/data
-```
-
-**步骤 5: 设置开机自动挂载（可选）**
-
-为了确保系统重启后自动挂载该磁盘，您需要编辑 `/etc/fstab` 文件。
-
-首先，获取磁盘的 UUID：
-
-```bash
-sudo blkid /dev/sdb
-```
-
-输出示例：
-
-```
-/dev/sdb: UUID="some-unique-id" TYPE="ext4"
-```
-
-然后编辑 `/etc/fstab` 文件：
-
-```bash
-sudo vi /etc/fstab
-```
-
-添加一行如下内容（根据实际情况调整）：
-
-```
-UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
-```
-
-
-
-保存并退出编辑器。
-
-**总结**
-
-通过上述步骤，可以直接在 `/dev/sdb` 上创建文件系统并挂载它，而无需创建任何分区。 
-
-> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250217175602994.png" alt="image-20250217175602994" style="zoom:50%;" />
-
-
-
-### 增加交换分区，扩展系统的可用内存
 
 ```
 sudo dd if=/dev/zero of=/swapfile bs=1M count=6144
@@ -808,6 +694,105 @@ sudo mount -a
 > - **交换分区（Swap space）**：虽然交换分区位于硬盘上，但它并不是用来存储连续的虚拟内存块的。相反，它是作为物理内存的一个扩展，用于临时存放那些当前不活跃的内存页。因此，即使是交换分区本身，也不会保证虚拟内存页是以连续的形式存储的。
 >
 > 综上所述，虚拟内存的设计和实现确保了即便在物理层面上数据存储是非连续的，也能给用户和应用程序提供一个看似连续、一致的内存视图。这种抽象不仅提高了内存使用的灵活性和效率，还增强了系统的稳定性和安全性。
+
+
+
+## 1.4 在云虚拟机部署《从零构建大模型》
+
+《从零构建大模型》代码，https://github.com/rasbt/LLMs-from-scratch
+
+RockyLinux / RHEL / Fedora 系统级的包管理器（类似于 Ubuntu 的 `apt`）。可以安装系统软件、库、Python 解释器。
+
+Python 官方的包管理工具。可以安装 Python 生态里的库（numpy、torch、jupyter 等）。
+
+uv是更高级的 Python 包管理器，创建虚拟环境并安装项目依赖（比 pip 快）。例如：创建虚拟环境：`uv venv`，安装依赖：`uv pip install -r requirements.txt`，运行程序：`uv run python train.py`
+
+
+
+以下安装 Python3.11、uv、依赖、Jupyter。
+
+### 1.安装 Python 3.11
+
+RockyLinux 默认可能只有 Python 3.9，需要启用 **EPEL 和 CRB**，用 `dnf` 安装：
+
+```bash
+sudo dnf update -y
+sudo dnf install -y epel-release
+sudo dnf config-manager --set-enabled crb
+sudo dnf install -y python3.11 python3.11-devel python3.11-pip
+```
+
+确认版本：
+
+```bash
+python3.11 --version
+```
+
+------
+
+### 2.安装 uv（包管理工具）
+
+和 Mac 一样用 pip：
+
+```bash
+python3.11 -m pip install --upgrade pip
+python3.11 -m pip install uv
+```
+
+------
+
+### 3.获取代码
+
+```bash
+wget https://github.com/rasbt/LLMs-from-scratch/archive/refs/heads/main.zip
+unzip main.zip
+cd LLMs-from-scratch-main
+```
+
+------
+
+### 4.创建虚拟环境
+
+```bash
+uv venv --python=python3.11
+source .venv/bin/activate
+```
+
+验证：
+
+```bash
+which python
+python --version
+```
+
+应该输出 `.venv/bin/python` 和 `3.11.x`。
+
+### 5.安装依赖
+
+```bash
+uv pip install torch
+uv pip install -r requirements.txt
+```
+
+### 6.设置新口令
+
+```
+jupyter server password
+```
+
+### 7.启动 Jupyter Lab
+
+Linux 下和 Mac 一样：
+
+```bash
+uv run jupyter lab --no-browser --ip=0.0.0.0 --port=8888
+```
+
+
+
+然后局域网另外机器浏览器访问输出的 URL（通常是 `http://localhost:8888/lab`）。
+
+http://10.129.242.57:8888/lab
 
 
 
