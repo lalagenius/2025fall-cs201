@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-12 15:39 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-12 20:20 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0913 | 06648: Sequence    | heap   | Tough    | http://cs101.openjudge.cn/practice/06648/      | 
+| 0913 | 23.合并K个升序链表 | merge sort, linked list  | Tough    | https://leetcode.cn/problems/merge-k-sorted-lists/      ||
 | 0912 | 02456: Aggressive cows     | binary+greedy    | Medium    | http://cs101.openjudge.cn/practice/02456/      | 
 | 0912 | 240.搜索二维矩阵II     | binary search    | Medium    | https://leetcode.cn/problems/search-a-2d-matrix-ii/      | 
 | 0911 | 02299: Ultra-QuickSort | merge sort  | Tough    | http://cs101.openjudge.cn/pctbook/T02299/      | 
