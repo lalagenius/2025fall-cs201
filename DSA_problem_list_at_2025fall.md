@@ -19,8 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
-| 0904 | 02488: A Knight's Journey  | backtracking    | Touch  | http://cs101.openjudge.cn/practice/02488/      | 
-| 0904 | 78.子集  | backtracking   | Medium    | https://leetcode.cn/problems/subsets/      | 
+| 0914 | 02488: A Knight's Journey  | backtracking    | Touch  | http://cs101.openjudge.cn/practice/02488/      | 
+| 0914 | 78.子集  | backtracking   | Medium    | https://leetcode.cn/problems/subsets/      | 
 | 0913 | 06648: Sequence    | heap   | Tough    | http://cs101.openjudge.cn/pctbook/T06648/      | 
 | 0913 | 23.合并K个升序链表 | merge sort, linked list  | Tough    | https://leetcode.cn/problems/merge-k-sorted-lists/      ||
 | 0912 | 02456: Aggressive cows     | binary+greedy    | Medium    | http://cs101.openjudge.cn/practice/02456/      | 
