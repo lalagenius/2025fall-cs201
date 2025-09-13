@@ -1,6 +1,6 @@
 #  20250908-Week1-虚拟机，Shell&本地大语言模型
 
-*Updated 2025-09-11 13:19 GMT+8*  
+*Updated 2025-09-13 21:38 GMT+8*  
  *Compiled by Hongfei Yan (2025 Fall)*    
 
 https://github.com/GMyhf/2025fall-cs201/
@@ -9,6 +9,10 @@ https://github.com/GMyhf/2025fall-cs201/
 
 logs：
 
+>  如果用Chrome浏览器访问md文件，可以安装 [Markdown Viewer](https://chromewebstore.google.com/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) 插件。安装好之后，点击浏览器右上角 m 图标，Advanced option, allow access打开；点 Settings，选上mathjax, mermaid, syntax, toc。 
+>
+>  
+>
 >  2025/9/11 删除了春季的云虚拟机，重新创建，增加 1.4节 “在云虚拟机部署《从零构建大模型》代码”
 >
 >  课程材料
@@ -212,10 +216,12 @@ if __name__ == "__main__":
 
 - **clab.pku.edu.cn**：CLab 是服务北大师生的云计算平台。提供基于云的虚拟实验室环境，供学生和研究人员用于教学、学习和科研目的。用户可以通过互联网访问这些虚拟机，执行编程实验、模拟等任务。
 
-  > 北大为每位同学/老师提供了一台云端虚拟机，配置为 4GB 内存、100GB SSD硬盘，可自主领取和使用，可以装Linux系统。https://clab.pku.edu.cn
+  > 写程序时，通常打开终端（terminal），通过 SSH 登录到服务器，使用 vi 编辑代码，并借助 python/g++/gcc 进行解释、编译和调试。
   >
-  > 答疑渠道：QQ群 432191140
-  > 问题答案：linuxclub@pku.edu.cn
+  > 现在，北京大学为大家提供了这样的实际环境——每位同学和老师都可以领取并使用一台云端虚拟机。该虚拟机配置为 4GB 内存、100GB SSD 硬盘，支持安装 Linux 系统，供大家自由探索和学习。
+  >
+  > 👉 申请地址：https://clab.pku.edu.cn/
+  > 💬 答疑渠道：QQ群 432191140，入群问题答案：linuxclub@pku.edu.cn
 
 无论是本地还是云端的虚拟机，它们都提供了灵活的计算资源分配方案，帮助用户测试软件、开发新应用或进行研究工作，而无需投资额外的硬件设施。随着云计算技术的发展，越来越多的服务迁移到了云端，使得用户可以从任何地方访问高性能的计算资源。
 
@@ -352,7 +358,8 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 > ssh-keygen -t ed25519
 > ```
 >
-> 
+> - **保密通信**：`发送方` 用 `接收方的公钥` **加密** -> `接收方` 用 `自己的私钥` **解密**。
+> - **身份验证（数字签名）**：`发送方` 用 `自己的私钥` **签名** -> `接收方` 用 `发送方的公钥` **验证**签名。
 
 
 
@@ -374,7 +381,9 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 
 从云硬盘启动：是
 
-系统盘：类型SSD，容量100GiB
+系统盘：类型SSD，容量100GiB。直接用满100GB，这样省事，否则之后还要挂接数据盘。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250913205915327.png" alt="image-20250913205915327" style="zoom: 67%;" />
 
 
 
@@ -694,6 +703,146 @@ sudo mount -a
 > - **交换分区（Swap space）**：虽然交换分区位于硬盘上，但它并不是用来存储连续的虚拟内存块的。相反，它是作为物理内存的一个扩展，用于临时存放那些当前不活跃的内存页。因此，即使是交换分区本身，也不会保证虚拟内存页是以连续的形式存储的。
 >
 > 综上所述，虚拟内存的设计和实现确保了即便在物理层面上数据存储是非连续的，也能给用户和应用程序提供一个看似连续、一致的内存视图。这种抽象不仅提高了内存使用的灵活性和效率，还增强了系统的稳定性和安全性。
+
+
+
+#### Q6. 请问成功与虚拟机连接上之后我们下一步要干什么?
+
+A: 你多了台机器，想到做什么都可以的。这是学校送给你的机器，系统是Linux，可以在上面写程序、编译/解释/调试、运行，或者部署 从零构建模型 的代码等。
+
+> 例如：
+>
+> 1）部署 从零构建大模型 的 代码。放到clab云虚拟机上了，可以从我本地机器通过浏览器访问。
+>
+> ![b2f00fe8518fb7b3395fd7a749aade4a](https://raw.githubusercontent.com/GMyhf/img/main/img/b2f00fe8518fb7b3395fd7a749aade4a.jpg)
+>
+> 
+>
+> 2）我现在可以在浏览器里面写程序，实际上就是连到云虚拟机。
+>
+> ![daee029b09bc366821cdbb4a36d5933d](https://raw.githubusercontent.com/GMyhf/img/main/img/daee029b09bc366821cdbb4a36d5933d.png)
+>
+> 这是浏览器的一个页面。类似于力扣提供的 Playground，但是不付费的化，只能开6个页面。我这云虚拟机可以开无数。
+>
+> 
+>
+> 3）把我有的OJ测试数据，也搬到云虚拟机上了。testing_code.py, offlinejudge.zsh都可以用的。
+>
+> ```python
+> # testing_code.py
+> import subprocess
+> import difflib
+> import os
+> import sys
+> 
+> def test_code(script_path, infile, outfile):
+>     command = ["python", script_path]  # 使用Python解释器运行脚本
+>     with open(infile, 'r') as fin, open(outfile, 'r') as fout:
+>         expected_output = fout.read().strip()
+>         # 启动一个新的子进程来运行指定的命令
+>         process = subprocess.Popen(command, stdin=fin, stdout=subprocess.PIPE)
+>         actual_output, _ = process.communicate()
+>         if actual_output.decode().strip() == expected_output:
+>             return True
+>         else:
+>             print(f"Output differs for {infile}:")
+>             diff = difflib.unified_diff(
+>                 expected_output.splitlines(),
+>                 actual_output.decode().splitlines(),
+>                 fromfile='Expected', tofile='Actual', lineterm=''
+>             )
+>             print('\n'.join(diff))
+>             return False
+> 
+> 
+> if __name__ == "__main__":
+>     # 检查命令行参数的数量
+>     if len(sys.argv) != 2:
+>         print("Usage: python testing_code.py <filename>")
+>         sys.exit(1)
+> 
+>     # 获取文件名
+>     script_path = sys.argv[1]
+> 
+>     #script_path = "class.py"  # 你的Python脚本路径
+>     #test_cases = ["d.in"]  # 输入文件列表
+>     #expected_outputs = ["d.out"]  # 预期输出文件列表
+>     # 获取当前目录下的所有文件
+>     files = os.listdir('.')
+> 
+>     # 筛选出 .in 和 .out 文件
+>     test_cases = [f for f in files if f.endswith('.in')]
+>     test_cases = sorted(test_cases, key=lambda x: int(x.split('.')[0]))
+>     #print(test_cases)
+>     expected_outputs = [f for f in files if f.endswith('.out')]
+>     expected_outputs = sorted(expected_outputs, key=lambda x: int(x.split('.')[0]))
+>     #print(expected_outputs)
+> 
+>     for infile, outfile in zip(test_cases, expected_outputs):
+>         if not test_code(script_path, infile, outfile):
+>             break
+> 
+> ```
+>
+> testing_code.py只能是测试数据是 0.in, 0.out, 1.in,1.out....这种数字文件名时候才能用，因为代码里面有个按照整数排序。如果测试文件是其他字母名字，不能用。
+>
+> 
+>
+> offlinejudge.zsh
+>
+> ```shell
+> cd $2
+> for i in *.in; do
+> 	diff -y <(python3 "$1" < "$i")  "${i%.*}.out"
+> done
+> 
+> ```
+>
+> 
+>
+> ![ac428f33b463d0b4c6ceddbc9a956d66](https://raw.githubusercontent.com/GMyhf/img/main/img/ac428f33b463d0b4c6ceddbc9a956d66.jpg)
+>
+> offlinejudge.zsh都可以用，测试文件什么名字都可以。需要在 测试数据 所在目录中运行。
+>
+> ![9c2ba449b525d5502350dfcc82e77f86](https://raw.githubusercontent.com/GMyhf/img/main/img/9c2ba449b525d5502350dfcc82e77f86.png)
+>
+> 
+>
+> **使用测试数据运行程序**
+>
+> 本书提供了一些题目的测试数据，见：
+> https://github.com/GMyhf/2021fall-cs101/tree/main/cs101_test_data
+>
+> 下载并解压后，你会看到类似 `0.in`, `0.out` 的文件对。
+>
+> - `0.in` 是输入数据
+> - `0.out` 是正确输出结果
+>
+> 将程序文件与测试数据放在同一目录下，然后在 **PowerShell** 中运行：
+>
+> ```powershell
+> python 4A.py < 0.in > 0my.out
+> ```
+>
+> 解释：
+>
+> - `< 0.in` 表示将 `0.in` 内容作为输入数据
+> - `> 0my.out` 表示程序的输出结果写入到 `0my.out` 文件
+>
+> 此时，你只需对比 `0my.out` 与 `0.out`，即可发现程序与标准答案的差异，从而定位 bug。
+>
+> 
+>
+> **3. 在 macOS 中的操作**
+>
+> 在 **macOS** 下操作方式类似，也需要先确认 Python 的安装位置，然后使用同样的 `<` 与 `>` 重定向符号来运行和保存结果。
+>
+> 视频讲解参考：
+>
+> - Windows 环境：https://www.bilibili.com/video/BV1jT4y1B7eU
+> - macOS 环境：https://www.bilibili.com/video/BV15341137sg
+
+
 
 
 
@@ -2066,6 +2215,284 @@ DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 
 
 ![image-20250216085123730](https://raw.githubusercontent.com/GMyhf/img/main/img/202502160851001.png)
+
+
+
+## 3.4 LM Studio API 交互
+
+目前，我正在 macOS 机器上使用 **LM Studio 0.3.25** 版本，加载的大模型为 **Qwen3-32B**（GGUF 格式，上下文长度 4096），模型文件大小约为 **18.55GB**。
+
+### 3.4.1 图形界面交互
+
+通过 LM Studio 的图形化界面，可以便捷地进行自然语言交互，例如查询编程相关问题。用户只需在对话框中输入问题，模型即可实时生成解答，体验类似于使用 ChatGPT。例如：
+
+在图形界面的 LM Studio 中可以查询编程问题，如：
+
+给出python: 
+
+在一个有180人的大班级中，存在两个人生日相同的概率非常大，现给出每个学生的学号，出生月日。试找出所有生日相同的学生。
+
+输入
+
+第一行为整数n，表示有n个学生，n<100。
+此后每行包含一个字符串和两个整数，分别表示学生的学号（字符串长度小于10）和出生月(1<=m<=12)日(1<=d<=31)。
+学号、月、日之间用一个空格分隔。
+
+输出
+
+对每组生日相同的学生，输出一行，
+其中前两个数字表示月和日，后面跟着所有在当天出生的学生的学号，数字、学号之间都用一个空格分隔。
+对所有的输出，要求按日期从前到后的顺序输出。
+对生日相同的学号，按输入的顺序输出。
+
+样例输入
+
+```
+5
+00508192 3 2
+00508153 4 5
+00508172 3 2
+00508023 4 5
+00509122 4 5
+```
+
+样例输出
+
+```
+3 2 00508192 00508172
+4 5 00508153 00508023 00509122
+```
+
+
+
+
+
+qwen3-32b Thought for 2 minutes 16 seconds
+
+```python
+from collections import defaultdict
+import sys
+
+def main():
+    n = int(sys.stdin.readline())
+    birthday_dict = defaultdict(list)
+    
+    for _ in range(n):
+        data = sys.stdin.readline().strip()
+        sid, m, d = data.split()
+        month = int(m)
+        day = int(d)
+        birthday_dict[(month, day)].append(sid)
+    
+    # 按日期排序
+    sorted_dates = sorted(birthday_dict.keys())
+    
+    for date in sorted_dates:
+        sids = birthday_dict[date]
+        if len(sids) >= 2:
+            print(f"{date[0]} {date[1]} {' '.join(sids)}")
+
+if __name__ == "__main__":
+    main()
+```
+
+15.74 token/s • 2334 token • 首个token用时 3.15 s • 停止原因: 检测到 EOS token
+
+
+
+代码提交到 http://cs101.openjudge.cn/pctbook/E02724/，可以AC。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250913200449172.png" alt="image-20250913200449172" style="zoom: 33%;" />
+
+
+
+### 3.4.2 程序API 交互
+
+
+
+**1. 确认 LM Studio API 已开启**
+
+LM Studio 提供一个 **本地 HTTP API**，默认端口是 `http://localhost:1234`。
+打开 LM Studio → 点开发者按钮（左侧第一个是聊天按钮，第二个是开发者按钮） ，启动 **“OpenAI Compatible API Server”** 。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/f5553643c9cbca52a7b1cb74548de9da.png" alt="f5553643c9cbca52a7b1cb74548de9da" style="zoom: 33%;" />
+
+
+
+**2. 安装 Python 依赖**
+
+在终端安装官方 `openai` 库（兼容 OpenAI API 格式）。
+
+```bash
+pip install openai requests
+```
+
+
+
+**3. 编写 Python 交互脚本**
+
+首先确定哪些模型可用。在terminal中运行
+
+```
+% curl http://127.0.0.1:1234/v1/models/
+```
+
+
+
+方式 A：用 `openai` 库（推荐）
+
+LM Studio 模拟了 OpenAI API，所以可以直接用 `openai` 包。
+
+```python
+from openai import OpenAI
+
+# 连接到 LM Studio 的本地 API
+client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
+
+def ask_lmstudio(prompt: str):
+    response = client.chat.completions.create(
+        model="qwen3-32b",   # 模型名字可以在 LM Studio 里看到
+        messages=[
+            {"role": "system", "content": "You are a helpful AI assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7,
+    )
+    return response.choices[0].message.content
+
+if __name__ == "__main__":
+    question = """给出python: 
+在一个有180人的大班级中...（此处写完整题目）"""
+    answer = ask_lmstudio(question)
+    print("模型回答：\n", answer)
+```
+
+运行：
+
+```bash
+python chat_lmstudio.py
+```
+
+------
+
+方式 B：用 `requests`（更原始）
+
+如果不想装 `openai` 包，可以直接 POST 请求：
+
+```python
+import requests
+import json
+
+API_URL = "http://localhost:1234/v1/chat/completions"
+
+def ask_lmstudio(prompt: str):
+    headers = {"Content-Type": "application/json"}
+    data = {
+        "model": "qwen3-32b",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.7
+    }
+    response = requests.post(API_URL, headers=headers, data=json.dumps(data))
+    return response.json()["choices"][0]["message"]["content"]
+
+if __name__ == "__main__":
+    question = "给出python: 在一个有180人的大班级中..."
+    answer = ask_lmstudio(question)
+    print("模型回答：\n", answer)
+```
+
+------
+
+**4. 收集返回结果**
+
+- 上述代码会在终端打印结果，你也可以写入文件：
+
+```python
+with open("answer.txt", "w", encoding="utf-8") as f:
+    f.write(answer)
+```
+
+
+
+**5. 调试小技巧**
+
+- 如果 API 报错，先确认 LM Studio 设置里的 **API server 已开启**。
+- 模型名称可以在 LM Studio 的 API 文档里看到（通常是你加载的模型名字，如 `qwen3-32b`）。
+
+### 3.4.3 交互式版本
+
+写一个 **交互式版本**，可以在 Terminal 连续提问，就像和模型对话一样。
+
+这个脚本会：
+
+- 一直循环等待用户输入
+- 保留对话上下文（模型能记住之前的问答）
+- 输入 `exit` 或 `quit` 就结束
+
+
+
+```python
+from openai import OpenAI
+
+# 连接到 LM Studio 的本地 API
+client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
+
+def interactive_chat():
+    messages = [{"role": "system", "content": "You are a helpful AI assistant."}]
+    print("💬 已连接 LM Studio，本地模型对话开始。输入 'exit' 或 'quit' 退出。\n")
+
+    while True:
+        user_input = input("你: ").strip()
+        if user_input.lower() in ["exit", "quit"]:
+            print("👋 结束对话。")
+            break
+
+        messages.append({"role": "user", "content": user_input})
+        try:
+            response = client.chat.completions.create(
+                model="qwen3-32b",   # 模型名称
+                messages=messages,
+                temperature=0.7,
+            )
+            reply = response.choices[0].message.content
+            print(f"AI: {reply}\n")
+            messages.append({"role": "assistant", "content": reply})
+        except Exception as e:
+            print("❌ 出错了:", e)
+
+if __name__ == "__main__":
+    interactive_chat()
+```
+
+------
+
+**使用方式**
+
+1. 把代码保存为 `inter_chat_lmstudio.py`
+
+2. 在 Terminal 运行：
+
+   ```bash
+   python inter_chat_lmstudio.py
+   ```
+
+3. 输入问题，模型会回答；输入 `exit` 或 `quit` 退出。
+
+------
+
+**效果示例**
+
+```
+💬 已连接 LM Studio，本地模型对话开始。输入 'exit' 或 'quit' 退出。
+
+你: 给我一个冒泡排序的 Python 实现
+AI: 好的，这里是一个冒泡排序的示例代码……
+```
+
+
 
 
 
