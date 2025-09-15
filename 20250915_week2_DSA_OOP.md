@@ -1,6 +1,6 @@
 # Week2 DSA & OOP
 
-*Updated 2025-09-15 10:58 GMT+8*  
+*Updated 2025-09-15 17:17 GMT+8*  
 *Compiled by Hongfei Yan (2025 spring)*    
 https://github.com/GMyhf/2025fall-cs201/
 
@@ -8,9 +8,15 @@ https://github.com/GMyhf/2025fall-cs201/
 
 Logs:
 
-> cs201数算 2025spring每日选做
+> 熟练掌握 Linux 系统、Shell 命令、OJ 测试数据处理、Markdown 编写及 GitHub 使用，是必备的基础技能。
 >
-> https://github.com/GMyhf/2025fall-cs201/blob/main/DSA_problem_list_at_2025fall.md
+> 2025年秋“数据结构与算法”课程学生背景调研问卷
+>
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250915163303839.png" alt="image-20250915163303839" style="zoom: 50%;" />
+>
+> 
+>
+> [2025fall 数算（DS Algo）每日选作](https://github.com/GMyhf/2025fall-cs201/blob/main/DSA_problem_list_at_2025fall.md)
 >
 > LeetCode 热题 100，https://leetcode.cn/studyplan/top-100-liked/
 >
@@ -20,7 +26,7 @@ Logs:
 
 
 
-# 0 数据结构与算法
+# 引言 数据结构与算法
 
 https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/?ref=outind
 
@@ -37,6 +43,8 @@ https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/
 ![img](https://raw.githubusercontent.com/GMyhf/img/main/img/202402232017469.png)
 
 
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/fb96bc6ffdcf0b07190386d66d9e14ad.png" alt="fb96bc6ffdcf0b07190386d66d9e14ad" style="zoom: 67%;" />
 
 ⚠️ **重要提示：算法是前序《计算概论》（Algorithms and Data Structures，简称 ADS）课程的核心内容**
 
@@ -218,15 +226,15 @@ The implementation of an abstract data type, often referred to as a **data struc
 
 
 
-### 编程题目
+#### 编程题目
 
-#### 06640: 倒排索引
+**06640: 倒排索引**
 
 data structures, http://cs101.openjudge.cn/practice/06640/
 
 
 
-#### 04093: 倒排索引查询
+**04093: 倒排索引查询**
 
 data structures, http://cs101.openjudge.cn/practice/04093/
 
@@ -312,7 +320,7 @@ Python是一门现代化、易于学习的面向对象编程语言。它不仅�
 Python支持**面向对象编程（OOP）**。这意味着在Python中，数据被视为问题求解的核心。
 在OOP中，**类（class）**用来描述数据的构成（状态）以及数据可以执行的操作（行为）。通过类实例化得到的对象（object）就是数据的具体表现形式。由于使用者只需关注对象的状态与行为，而无需了解其底层实现，类也可以被看作是一种**抽象数据类型（ADT）**。
 
-### 1 内建原子数据类型
+### 1.1.1 内建原子数据类型
 
 Python提供了多种基础数据类型：
 
@@ -353,7 +361,7 @@ Python提供了多种基础数据类型：
 
 
 
-### 2 内建集合数据类型
+### 1.1.2 内建集合数据类型
 
 除数值与布尔类型外，Python还内置了多种集合类。它们可以分为两大类：
 
@@ -767,7 +775,7 @@ Python还为列表提供了丰富的方法（表1-3）：
 
 ## 1.2基本语法
 
-### 1 输入与输出
+### 1.2.1 输入与输出
 
 程序通常需要与用户交互，以便获取输入或输出结果。多数应用使用图形化对话框来收集数据，但在入门阶段，Python 提供了更简洁的方式。
 
@@ -889,7 +897,7 @@ print(f"{name} is {age} years old.")
 
 
 
-### 2 控制结构
+### 1.2.2 控制结构
 
 算法的执行离不开**迭代**和**分支**两类控制结构。Python 提供了多种方式来实现。
 
@@ -935,7 +943,7 @@ squares = [x**2 for x in range(10) if x % 2 == 0]
 
 
 
-### 3 异常处理
+### 1.2.3 异常处理
 
 在编程过程中，错误主要分为两类：
 
@@ -995,7 +1003,7 @@ raise ValueError("Invalid input!")
 
 
 
-### 4 定义函数
+### 1.2.4 定义函数
 
 函数是一种过程抽象工具，可以将复杂的计算隐藏在简洁的调用中。
 在 Python 中，函数定义包含：
@@ -1125,7 +1133,7 @@ Python 是一门支持面向对象编程（Object-Oriented Programming, OOP）�
 
 
 
-### 1 Fraction类
+### 1.3.1 Fraction类
 
 为了展示如何定义用户自定义类，我们将以实现一个名为 `Fraction` 的类为例，该类用于表示数学中的分数。虽然 Python 已经提供了多种数值类型（如 `int` 和 `float`），但浮点数存在精度损失的问题，无法精确表示所有分数。因此，我们需要一种方式来**精确表示并操作分数**。
 
@@ -1508,7 +1516,7 @@ for i in names:
 
 
 
-### 2 继承（Inheritance）
+### 1.3.2 继承（Inheritance）
 
 **继承**是面向对象编程（OOP）的四大特性之一（封装、抽象、多态、继承），它允许一个类（**子类 / 派生类**）基于另一个类（**父类 / 超类 / 基类**）来构建，自动获得父类的数据属性和方法行为。
 
@@ -1597,7 +1605,7 @@ print(my_car[0])     # 输出: Toyota
 
 
 
-**实战案例：`IrisNet(nn.Module)` 中的继承**
+#### 实战案例：`IrisNet(nn.Module)` 中的继承
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/iris_neural_network.md
 
@@ -1792,10 +1800,6 @@ print(f"\nSample prediction: True class {y_test[0].item()}, "
 
 
 # 附录
-
-
-
-cs201数算（计算机基础2/2）[2025fall 数算（DS Algo）每日选作](https://github.com/GMyhf/2025fall-cs201/blob/main/DSA_problem_list_at_2025fall.md)
 
 [Python数据结构与算法分析（第3版）](https://runestone.academy/ns/books/published/pythonds3/index.html)
 
