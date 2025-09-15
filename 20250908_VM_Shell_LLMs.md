@@ -1,6 +1,6 @@
 #  20250908-Week1-虚拟机，Shell&本地大语言模型
 
-*Updated 2025-09-13 21:38 GMT+8*  
+*Updated 2025-09-15 15:23 GMT+8*  
  *Compiled by Hongfei Yan (2025 Fall)*    
 
 https://github.com/GMyhf/2025fall-cs201/
@@ -922,6 +922,16 @@ python --version
 uv pip install torch
 uv pip install -r requirements.txt
 ```
+
+为了之后程序能 import sklearn.xxx，
+
+可以一并安装
+
+```bash
+uv pip install scikit-learn
+```
+
+
 
 ### 6.设置新口令
 
