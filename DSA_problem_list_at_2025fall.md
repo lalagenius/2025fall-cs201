@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0916 | 58A. Chat room | greedy, strings   | 1000 | http://codeforces.com/problemset/problem/58/A          |
+| 0916 | 20742: 泰波拿契數   | implementation   | Easy | http://cs101.openjudge.cn/pctbook/E20742/          |
 | 0915 | 07618: 病人排队 | sortings   | Easy | http://cs101.openjudge.cn/pctbook/E07618          | 
 | 0915 | 02724: 生日相同 | sortings      | Easy  | http://cs101.openjudge.cn/pctbook/E02724/      |
 | 0914 | 02488: A Knight's Journey  | backtracking    | Touch  | http://cs101.openjudge.cn/practice/02488/      | 
