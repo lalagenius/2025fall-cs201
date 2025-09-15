@@ -1,12 +1,10 @@
 # 人工智能概览
 
-Updated 1800 GMT+8 Aug 12 2025
-
-2025 summer, Complied by Hongfei Yan
-
-
-
+*Updated 2025-09-15 15:29 GMT+8*  
+*Compiled by Hongfei Yan (2025 Summer)*    
 https://github.com/GMyhf/2025fall-cs201/
+
+
 
 
 
@@ -482,7 +480,7 @@ if __name__ == "__main__":
 
 > 云虚拟机运行结果：
 >
-> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250223151816482.png" alt="image-20250223151816482" style="zoom:50%;" />
+> ![image-20250915152854981](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250915152854981.png)
 
 
 
