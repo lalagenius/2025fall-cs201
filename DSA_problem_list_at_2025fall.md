@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-14 23:20 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-16 20:17 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0917 | 02659: Bomb Game  | matrices  | Medium   | http://cs101.openjudge.cn/practice/02659/      |
+| 0917 | 2597.美丽子集的数目 | backtracking, combinations    | Medium    | https://leetcode.cn/problems/the-number-of-beautiful-subsets/      |
 | 0916 | 58A. Chat room | greedy, strings   | 1000 | http://codeforces.com/problemset/problem/58/A          |
 | 0916 | 20742: 泰波拿契數   | implementation   | Easy | http://cs101.openjudge.cn/pctbook/E20742/          |
 | 0915 | 07618: 病人排队 | sortings   | Easy | http://cs101.openjudge.cn/pctbook/E07618          | 
