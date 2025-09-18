@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-18 13:55 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-19 20:53 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0919 | 20140:今日化学论文 | stack    | Medium    | http://cs101.openjudge.cn/pctbook/M20140/ 
+| 0919 | 2070.每一个查询的最大美丽值   | binary search    | Medium     | https://leetcode.cn/problems/most-beautiful-item-for-each-query/      |
 | 0918 | 03704:扩号匹配问题 | stack    | Medium    | http://cs101.openjudge.cn/pctbook/M03704/      | 
 | 0918 | 394.字符串解码     | stack    | Medium | https://leetcode.cn/problems/decode-string/
 | 0917 | 02659: Bomb Game  | matrices  | Medium   | http://cs101.openjudge.cn/practice/02659/      |
