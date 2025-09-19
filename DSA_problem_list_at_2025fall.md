@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-19 20:53 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-19 14:39 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,12 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0921 | 02749:分解因数     | recursion    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02749/      | 
+| 0921 | sy295: 可能的出栈序列     | stack    | Medium  | https://sunnywhy.com/sfbj/7/1/295      | 
+| similar | 22068:合法出栈序列 | stack| Medium | http://cs101.openjudge.cn/practice/22068/      |
+| 0920 | 02694:波兰表达式  | stack    | Medium    | http://cs101.openjudge.cn/pctbook/M02694/      | 
+|similar | 150.逆波兰表达式求值 | stack    | Medium    | https://leetcode.cn/problems/evaluate-reverse-polish-notation/      |
+| 0920 | 3478.选出和最大的K个元素     | heap    | Medium    | https://leetcode.cn/problems/choose-k-elements-with-maximum-sum/      |
 | 0919 | 20140:今日化学论文 | stack    | Medium    | http://cs101.openjudge.cn/pctbook/M20140/ 
 | 0919 | 2070.每一个查询的最大美丽值   | binary search    | Medium     | https://leetcode.cn/problems/most-beautiful-item-for-each-query/      |
 | 0918 | 03704:扩号匹配问题 | stack    | Medium    | http://cs101.openjudge.cn/pctbook/M03704/      | 
