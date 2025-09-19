@@ -19,7 +19,7 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
-| 0921 | 02749:分解因数     | recursion    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02749/      | 
+| 0921 | 02749:分解因数     | recursion    | Medium    | http://cs101.openjudge.cn/pctbook/M02749/      | 
 | 0921 | sy295: 可能的出栈序列     | stack    | Medium  | https://sunnywhy.com/sfbj/7/1/295      | 
 | similar | 22068:合法出栈序列 | stack| Medium | http://cs101.openjudge.cn/practice/22068/      |
 | 0920 | 02694:波兰表达式  | stack    | Medium    | http://cs101.openjudge.cn/pctbook/M02694/      | 
