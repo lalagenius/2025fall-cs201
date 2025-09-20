@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-19 14:39 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-20 18:08 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0922 | 04015: 邮箱验证     | string, RE    | Medium    | http://cs101.openjudge.cn/pctbook/M04015      | 
+| 0922 | 274.H指数   | sorting    | Medium    | https://leetcode.cn/problems/h-index/      |
 | 0921 | 02749:分解因数     | recursion    | Medium    | http://cs101.openjudge.cn/pctbook/M02749/      | 
 | 0921 | sy295: 可能的出栈序列     | stack    | Medium  | https://sunnywhy.com/sfbj/7/1/295      | 
 | similar | 22068:合法出栈序列 | stack| Medium | http://cs101.openjudge.cn/practice/22068/      |
