@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-23 19:59 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-24 21:17 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0925 | 11.盛最多水的容器    | greedy, two pointers     | Medium | https://leetcode.cn/problems/container-with-most-water/          |
+| 0925 | 128.最长连续序列     | hash table      | Medium | https://leetcode.cn/problems/longest-consecutive-sequence/          |
 | 0924 | 49.字母异位词分组      | hash table, string, sorting       | Medium | https://leetcode.cn/problems/group-anagrams/          |
 | 0924 | 1.两数之和      | hash table       | Easy | https://leetcode.cn/problems/two-sum/          |
 | 0923 | 3484.设计电子表格 | OOP, RE | Medium  | https://leetcode.cn/problems/design-spreadsheet/      |
