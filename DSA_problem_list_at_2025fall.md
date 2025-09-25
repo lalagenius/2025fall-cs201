@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0926 | 3.无重复字符的最长子串  | sliding window       | Medium | https://leetcode.cn/problems/longest-substring-without-repeating-characters/          |
+| 0926 | 15.三数之和   | two pointers      | Medium | https://leetcode.cn/problems/3sum/          |
 | 0925 | 11.盛最多水的容器    | greedy, two pointers     | Medium | https://leetcode.cn/problems/container-with-most-water/          |
 | 0925 | 128.最长连续序列     | hash table      | Medium | https://leetcode.cn/problems/longest-consecutive-sequence/          |
 | 0924 | 49.字母异位词分组      | hash table, string, sorting       | Medium | https://leetcode.cn/problems/group-anagrams/          |
