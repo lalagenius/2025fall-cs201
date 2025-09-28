@@ -19,7 +19,7 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
-| 0929 | 189.轮转数组      | two pointers      | Medium | http://cs101.openjudge.cn/pctbook/M18155/          |
+| 0929 | 189.轮转数组      | two pointers      | Medium | https://leetcode.cn/problems/rotate-array/        |
 | 0929 | 18155: 组合乘积      | dfs, brute force  | Medium | http://cs101.openjudge.cn/pctbook/M18155/          |
 | 0928 | 53.最大子数组和      | greedy, dp       | Medium | https://leetcode.cn/problems/maximum-subarray/          |
 | 0928 | 28700: 罗马数字与整数的转换      | implementation, dict   | Medium | http://cs101.openjudge.cn/pctbook/M28700/          |
