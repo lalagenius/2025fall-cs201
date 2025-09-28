@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-09-28 01:21 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-09-28 23:52 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 0929 | 189.轮转数组      | two pointers      | Medium | http://cs101.openjudge.cn/pctbook/M18155/          |
+| 0929 | 18155: 组合乘积      | dfs, brute force  | Medium | http://cs101.openjudge.cn/pctbook/M18155/          |
 | 0928 | 53.最大子数组和      | greedy, dp       | Medium | https://leetcode.cn/problems/maximum-subarray/          |
 | 0928 | 28700: 罗马数字与整数的转换      | implementation, dict   | Medium | http://cs101.openjudge.cn/pctbook/M28700/          |
 | 0927 | 560. 和为K的子数组      | hash table, prefix sum       | Medium | https://leetcode.cn/problems/subarray-sum-equals-k/          |
@@ -68,7 +70,7 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 | 0906 | 04140: 方程求解   | 牛顿迭代法, AI  | Medium | http://cs101.openjudge.cn/practice/04140/      | 
 | 0906 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      | 
 | 0905 | 01328: Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/pctbook/M01328/      | 
-| 0905 | 56.合并区间     | greedy    | Easy    | https://leetcode.cn/problems/merge-intervals/     |
+| 0905 | 56.合并区间     | greedy    | Medium    | https://leetcode.cn/problems/merge-intervals/     |
 | 0904 | 27256: 当前队列中位数  | data structures, OOP    | Tough    | http://cs101.openjudge.cn/practice/27256/      | |
 | 0904 | 100576.提取至多K个元素的最大总和     | data structures | Medium | https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/ |
 | 0903 | 04093: 倒排索引查询| data structures, IR | Tough | http://cs101.openjudge.cn/practice/04093/     | 
