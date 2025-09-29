@@ -1553,9 +1553,193 @@ for i in names:
 
 
 
+### 1.3.2 矩阵乘法运算符
+
+#### 示例E18161: 矩阵运算(先乘再加)
+
+matrices, http://cs101.openjudge.cn/pctbook/E18161/
+
+现有三个矩阵A, B, C，要求矩阵运算A·B+C并输出结果
+
+矩阵运算介绍：
+矩阵乘法运算必须要前一个矩阵的列数与后一个矩阵的行数相同，
+如m行n列的矩阵A与n行p列的矩阵B相乘，可以得到m行p列的矩阵C，
+矩阵C的每个元素都由A的对应行中的元素与B的对应列中的元素一一相乘并求和得到，
+即C\[i][j] = A\[i][0]\*B\[0][j] + A\[i][1]\*B\[1][j] + …… +A\[i][n-1]*B\[n-1][j]
+
+(C\[i][j]表示C矩阵中第i行第j列元素)。
+
+矩阵的加法必须在两个矩阵行数列数均相等的情况下进行，
+如m行n列的矩阵A与m行n列的矩阵B相加，可以得到m行n列的矩阵C，
+矩阵C的每个元素都由A与B对应位置的元素相加得到，
+即C\[i][j] = A\[i][j] + B\[i][j]
+
+**输入**
+
+输入分为三部分，分别是A,B,C三个矩阵的内容。
+每一部分的第一行为两个整数，代表矩阵的行数row和列数col
+接下来row行，每行有col个整数，代表该矩阵这一行的每个元素
+
+**输出**
+
+如果可以完成矩阵计算，输出计算结果，与输入格式类似，不需要输出行数和列数信息。
+如果不能完成矩阵计算，输出"Error!"
+
+样例输入
+
+```
+Sample Input1:
+3 1
+0
+1
+0
+1 2
+1 1
+3 2
+3 1
+3 1
+3 1
+
+Sample Output1:
+3 1
+4 2
+3 1
+```
+
+样例输出
+
+```
+Sample Input2:
+1 1
+0
+2 1
+1
+3
+1 1
+9
+
+Sample Output2:
+Error!
+```
+
+提示
+
+sample1 计算过程
+$| 0 |$                $| 0 0 |$
+$| 1 | · |1 1| = | 1 1 |$
+$| 0 |$                 $| 0 0 |$
+
+$| 0 0 |$     $| 3 1 |$      $| 3 1 |$
+$| 1 1 | + | 3 1 | = | 4 2 |$
+$| 0 0 |$     $| 3 1 |$      $| 3 1 |$
+
+来源：cs101-2017 期末机考备选 & 2018 Mock Exam 2
 
 
-### 1.3.2 继承（Inheritance）
+
+思路：矩阵运算，如果没有学过可以百度下矩阵乘法（这是线性代数/高等代数的初步）
+
+```python
+A,B,C = [],[],[]
+
+a,b = map(int, input().split())
+for i in range(a):
+    A.append(list(map(int, input().split())))
+
+c,d = map(int, input().split())
+for i in range(c):
+    B.append(list(map(int, input().split())))
+
+e,f = map(int, input().split())
+for i in range(e):
+    C.append(list(map(int, input().split())))
+
+if b!=c or a!=e or d!=f:
+    print("Error!")
+else:
+    D = [[0 for j in range(f)] for i in range(e)]
+    for i in range(e):
+        for j in range(f):
+            for k in range(b):
+                D[i][j] += A[i][k] * B [k][j]
+            D[i][j] += C[i][j]
+
+    for i in range(e):
+        print(' '.join([str(j) for j in D[i]]))
+```
+
+
+
+ **`@` 运算符** 在 Python 中就是**矩阵乘法**（从 Python 3.5 开始引入 PEP 465），但它只在**支持 `__matmul__` 的对象**中有效，比如 `list` 自己封装的矩阵类。
+
+⚠️ 标准库里的 `list` 并没有定义 `__matmul__`，所以直接对普通嵌套列表写 `A @ B` 会报错。
+
+办法就是自己封装一个矩阵类，实现 `__matmul__` 和 `__add__` 方法。
+
+代码：
+
+```python
+class Matrix:
+    def __init__(self, data):
+        self.data = data
+        self.rows = len(data)
+        self.cols = len(data[0]) if self.rows else 0
+
+    def __matmul__(self, other):  # 定义 A @ B
+        if self.cols != other.rows:
+            raise ValueError("Matrix dimensions do not match for multiplication")
+        result = [[0] * other.cols for _ in range(self.rows)]
+        for i in range(self.rows):
+            for j in range(other.cols):
+                for k in range(self.cols):
+                    result[i][j] += self.data[i][k] * other.data[k][j]
+        return Matrix(result)
+
+    def __add__(self, other):  # 定义 A + B
+        if self.rows != other.rows or self.cols != other.cols:
+            raise ValueError("Matrix dimensions do not match for addition")
+        result = [
+            [self.data[i][j] + other.data[i][j] for j in range(self.cols)]
+            for i in range(self.rows)
+        ]
+        return Matrix(result)
+
+    def __str__(self):  # 打印友好
+        return "\n".join(" ".join(map(str, row)) for row in self.data)
+
+
+# === 读入 ===
+def read_matrix():
+    r, c = map(int, input().split())
+    data = [list(map(int, input().split())) for _ in range(r)]
+    return Matrix(data)
+
+
+A = read_matrix()
+B = read_matrix()
+C = read_matrix()
+
+# === 计算 ===
+try:
+    D = A @ B + C
+    print(D)  # 自动调用 __str__
+except ValueError:
+    print("Error!")
+```
+
+------
+
+`A @ B` 调用 `__matmul__`，就是矩阵乘法
+
+`(A @ B) + C` 调用 `__add__`，就是矩阵加法
+
+如果维度不合法，抛 `ValueError`，就能捕获并输出 `"Error!"`
+
+
+
+
+
+### 1.3.3 继承（Inheritance）
 
 **继承**是面向对象编程（OOP）的四大特性之一（封装、抽象、多态、继承），它允许一个类（**子类 / 派生类**）基于另一个类（**父类 / 超类 / 基类**）来构建，自动获得父类的数据属性和方法行为。
 
@@ -1827,6 +2011,14 @@ prediction = torch.argmax(model(sample), dim=1)
 print(f"\nSample prediction: True class {y_test[0].item()}, "
       f"Predicted class {prediction.item()}")
 ```
+
+> PyTorch 的 `nn.Module` 基类实现了 `__call__` 方法，当你像函数一样调用模型（`model(input)`）时，`__call__` 会自动处理以下流程：
+>
+> 1. 执行必要的前置操作（如启用训练/评估模式）。
+> 2. **调用你定义的 `forward()` 方法**。
+> 3. 返回 `forward` 的输出。
+>
+> ⚠️ 你**不应该直接调用 `model.forward()`**，而应该使用 `model(input)`，因为 `__call__` 中还包含一些重要的钩子（hooks）和状态管理。
 
 
 
