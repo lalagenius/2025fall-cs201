@@ -1,6 +1,6 @@
 # Week2 DSA & OOP
 
-*Updated 2025-09-15 17:17 GMT+8*  
+*Updated 2025-09-29 11:27 GMT+8*  
 *Compiled by Hongfei Yan (2025 spring)*    
 https://github.com/GMyhf/2025fall-cs201/
 
@@ -451,7 +451,7 @@ Python还为列表提供了丰富的方法（表1-3）：
 >
 > 万物皆数。
 > All is Number.
-> 															——毕达哥拉斯(Pythagoras)｜古希腊哲学家、数学家｜570 B.C.—495 B.C.        
+> 						——毕达哥拉斯(Pythagoras)｜古希腊哲学家、数学家｜570 B.C.—495 B.C.        
 >
 > ```mermaid
 > flowchart TD
@@ -606,7 +606,7 @@ Python还为列表提供了丰富的方法（表1-3）：
 >
 > <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20230902171300400.png" alt="image-20230902171300400" style="zoom: 25%;" />
 >
-> ​				图2　n×D矩阵X
+> ​				                        图2　n×D矩阵X
 >
 > 
 >
@@ -773,7 +773,7 @@ Python还为列表提供了丰富的方法（表1-3）：
 
 
 
-## 1.2基本语法
+## 1.2 基本语法
 
 ### 1.2.1 输入与输出
 
@@ -821,6 +821,8 @@ print(f"{name} is {age} years old.")
 
 
 
+#### `read`一次性读入，配合`iter`,`next`
+
 > 有的题目输入数据本来是给C++设计的，如果用Python需要一次性都读入。
 >
 > **04093: 倒排索引查询**
@@ -844,25 +846,62 @@ print(f"{name} is {age} years old.")
 >
 > ...
 >
+> 
+>
 > ```python
 > import sys
-> input = sys.stdin.read
-> data = input().split()
 > 
-> index = 0
-> N = int(data[index])
-> index += 1
 > 
-> word_documents = []
+> def main():
+>     data = sys.stdin.read().split()
+>     it = iter(data)
 > 
-> # 读取每个词的倒排索引
-> for _ in range(N):
->  ci = int(data[index])
->  index += 1
->  documents = sorted(map(int, data[index:index + ci]))
->  index += ci
->  word_documents.append(documents)
-> ....
+>     # 读入倒排索引的词数
+>     N = int(next(it))
+>     inverted = []
+>     for _ in range(N):
+>         # 每个词的出现文档数
+>         count = int(next(it))
+>         docs = set()
+>         for _ in range(count):
+>             docs.add(int(next(it)))
+>         inverted.append(docs)
+> 
+>     # 读入查询数目
+>     M = int(next(it))
+>     output_lines = []
+>     for _ in range(M):
+>         # 每个查询包含 N 个数字
+>         query = [int(next(it)) for _ in range(N)]
+>         candidate = None
+> 				...
+>         # 输出结果
+>         if candidate:
+>             result_line = " ".join(map(str, sorted(candidate)))
+>             output_lines.append(result_line)
+>         else:
+>             output_lines.append("NOT FOUND")
+> 
+>     sys.stdout.write("\n".join(output_lines))
+> 
+> 
+> if __name__ == '__main__':
+>     main()
+> ```
+>
+> 
+>
+> **M12029:水淹七军**
+>
+> bfs, dfs, http://cs101.openjudge.cn/pctbook/M12029/
+>
+> ```python
+> # 读取并处理输入
+> data = sys.stdin.read().split()
+> k = int(data[0])
+> id = 1
+> ans = []
+> ...
 > ```
 >
 > 
