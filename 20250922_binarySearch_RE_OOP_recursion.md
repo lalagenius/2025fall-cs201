@@ -1,6 +1,6 @@
 # 2025/09/22 二分、OOP、正则 & 递归
 
-*Updated 2025-09-22 17:44 GMT+8*  
+*Updated 2025-09-29 11:48 GMT+8*  
  *Compiled by Hongfei Yan (2025 Fall)*  
 
 
@@ -371,6 +371,10 @@ https://github.com/GMyhf/2025fall-cs201/blob/main/20250915_DA_week2_OOP.md
 （见 `1.3 面向对象编程` 部分）
 
 
+
+> 增加：1.3.2 矩阵乘法运算符
+>
+> 示例E18161: 矩阵运算(先乘再加)
 
 
 
