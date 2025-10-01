@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-10-01 00:53 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-10-01 23:41 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 1002 | 19.删除链表的倒数第N个结点| linked list, tow pointers | Medium | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/      |
+| 1002 | 02734: 十进制到八进制     | stack    | Easy    | http://cs101.openjudge.cn/pctbook/E02734/      |
 | 1001 | 234.回文链表     | linked list,two pointers    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
 |  |       | linked list begin | |         |
 | 1001 | 04133: 垃圾炸弹   | matrices       | Medium | http://cs101.openjudge.cn/pctbook/M04133/          |
