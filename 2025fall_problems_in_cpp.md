@@ -1,13 +1,13 @@
 #  Problems in OJ, CF & others
 
-*Updated 2025-10-02 13:02 GMT+8*
+*Updated 2025-10-02 23:02 GMT+8*
  *Compiled by Hongfei Yan (2025 Fall)*
 
 
 
 > Logs:
 >
-> 2025/10/2: 加了些 数算 【张梓康 元培】同学的CPP代码。
+> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】同学的CPP代码。
 >
 > 鉴于每学期都有同学偏好C++编程，本学期除维护Python题解外，也开始提供C++题解支持。
 
@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                  
+>                                        
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                  
+>                                        
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                  
+>                                        
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                  
+>                                        
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                  
+>                                        
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -1240,6 +1240,36 @@ int main() {
 
 
 
+## M1760.袋子里最少数目的球
+
+binary search, https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/
+
+
+二分答案
+
+```c++
+class Solution {
+public:
+    int minimumSize(vector<int>& nums, int maxOperations) {
+        int l = 1, r = *max_element(nums.begin(), nums.end());
+        int n = nums.size();
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            long long tmp = 0;
+            for (int i = 0; i < n; i++) {
+                tmp += (nums[i] / mid - 1);
+                if (nums[i] % mid) tmp ++;
+            }
+            if (tmp <= maxOperations) r = mid - 1;
+            else l = mid + 1;
+        }
+        return l;
+    }
+};
+```
+
+
+
 ## M02749:分解因数
 
 recursion, http://cs101.openjudge.cn/pctbook/M02749/
@@ -1603,7 +1633,7 @@ int main() {
 
 
 
-### M04135: 月度开销
+## M04135: 月度开销
 
 binary search, http://cs101.openjudge.cn/pctbook/M04135/
 
@@ -1689,6 +1719,41 @@ int main()
     return 0;
 }
 
+```
+
+
+
+思路：二分答案
+
+```c++
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int n, m;
+int a[100002];
+int main() {
+    cin >> n >> m;
+    int l = 1, r = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        r += a[i];
+        l = max(l, a[i]);
+    }
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+        int fajo = 0, tmp = 1;
+        for (int i = 0; i < n; i ++) {
+            if (fajo + a[i] > mid) {
+                fajo = a[i];
+                tmp ++;
+            } else fajo += a[i];
+        }
+        if (tmp <= m) r = mid - 1;
+        else l = mid + 1;
+    }
+    cout << l << endl;
+    return 0;
+}
 ```
 
 
@@ -1926,7 +1991,7 @@ int main()
 
 
 
-### 24684: 直播计票
+## 24684: 直播计票
 
 http://cs101.openjudge.cn/practice/24684/
 
