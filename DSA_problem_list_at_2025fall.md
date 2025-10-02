@@ -19,8 +19,10 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
-| 1003 | 1366D. Two Divisors | constructive algorithm, math, number theory   | 2000 | https://codeforces.com/problemset/problem/1366/D          |
+| 1004 | 1366D. Two Divisors | constructive algorithm, math, number theory   | 2000 | https://codeforces.com/problemset/problem/1366/D          |
+| 1004 |       |       | - |          |
 | 1003 | 230B. T-primes | binary search, implementation, math, number theory  | 1300 | https://codeforces.com/problemset/problem/230/B          |
+| 1003 | 02815: 城堡问题     | bfs, dfs, bit manipulation    | Medium    | http://cs101.openjudge.cn/practice/02815/      |
 | 1002 | 19.删除链表的倒数第N个结点| linked list, tow pointers | Medium | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/      |
 | 1002 | 02734: 十进制到八进制     | stack    | Easy    | http://cs101.openjudge.cn/pctbook/E02734/      |
 | 1001 | 234.回文链表     | linked list,two pointers    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
