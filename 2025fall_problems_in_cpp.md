@@ -1,11 +1,13 @@
 #  Problems in OJ, CF & others
 
-*Updated 2025-09-24 12:02 GMT+8*
+*Updated 2025-10-02 13:02 GMT+8*
  *Compiled by Hongfei Yan (2025 Fall)*
 
 
 
 > Logs:
+>
+> 2025/10/2: 加了些 数算 【张梓康 元培】同学的CPP代码。
 >
 > 鉴于每学期都有同学偏好C++编程，本学期除维护Python题解外，也开始提供C++题解支持。
 
@@ -117,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                               
+>                                  
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -134,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                               
+>                                  
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -151,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                               
+>                                  
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -170,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                               
+>                                  
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -185,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                               
+>                                  
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -710,7 +712,81 @@ int main() {
 
 
 
-### M28664: 验证身份证号 
+## 20742: 泰波拿契數
+
+http://cs101.openjudge.cn/practice/20742/
+
+思路：直接递归就可以，代码中采用了记录已访问过元素的值的方式，使运行时间降到了1ms，用时约10min
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int T[100] = {0, 1, 1, 2};
+
+int T_n(int n)
+{
+    	if (n > 3 && T[n] == 0)
+    	{
+    		T[n] = T_n(n-1)+T_n(n-2)+T_n(n-3);
+    	}
+    	if (n == 0) return 0;
+		if(n==1||n==2) return 1;
+        return T[n];
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+    cout << T_n(n);
+}
+```
+
+
+
+## 22359: Goldbach Conjecture
+
+http://cs101.openjudge.cn/practice/22359/
+
+思路：
+直接判断 i 和 n-i 是不是质数即可，不过令我震惊的是完全没有任何优化耗时竟然只有1ms，这就是c++的速度吗？用时约10min
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+bool isPrime(int num)
+{
+    for (int i = 2; i * i <= num; i++)
+    {
+        if (num % i == 0)
+            return false;
+    }
+    return true;
+}
+
+
+int main()
+{
+    int n;
+    cin >> n;
+    for (int i = 2; i <= n; i++)
+    {
+        if (isPrime(i) && isPrime(n - i))
+        {
+            cout << i << " " << n - i;
+            return 0;
+        }
+    }
+}
+```
+
+
+
+## M28664: 验证身份证号 
 
 http://cs101.openjudge.cn/pctbook/M28664/
 
@@ -748,6 +824,82 @@ int main()
 
 
 
+## E27653: Fraction类
+
+http://cs101.openjudge.cn/pctbook/E27653/
+
+请练习用OOP方式实现。
+
+
+
+思路：建立一个分数类，定义分数的定义，化简，运算和输出，用时约30分钟（主要用来学习什么是类）
+
+```c++
+//该题练习使用了一下类
+#include <iostream>
+using namespace std;
+//最大公约数
+int gcd(int a, int b)
+{
+    if (b == 0)
+    {
+        return a;
+    }
+    return gcd(b, a % b);
+    }
+
+//实现分数相加，化简的类
+class Fraction
+{
+    private:
+        int numerator; //分子
+        int denominator; //分母
+    public:
+        Fraction(int numerator, int denominator)
+        {
+            this->numerator = numerator;
+            this->denominator = denominator;
+            simplify();
+        }
+        //化简
+        void simplify()
+        {
+            int g = gcd(this->numerator, this->denominator);
+            this->numerator /= g;
+            this->denominator /= g;
+        }
+        //定义分数相加
+        Fraction operator+(Fraction& f)
+        {
+            int numerator = this->numerator * f.denominator + f.numerator * this->denominator;
+            int denominator = this->denominator * f.denominator;
+            simplify();
+            return Fraction(numerator, denominator);
+        }
+        //输出
+        void show()
+        {
+            cout << this->numerator << "/" << this->denominator << endl;
+        }
+};
+
+int main()
+{
+    int numerator_1, denominator_1, numerator_2, denominator_2;
+    cin >> numerator_1 >> denominator_1 >> numerator_2 >> denominator_2;
+    //两个分数相加及化简
+    Fraction f1(numerator_1, denominator_1);
+    Fraction f2(numerator_2, denominator_2);
+    Fraction f3 = f1 + f2;
+    f3.show();
+}
+
+```
+
+
+
+
+
 ## E28674:《黑神话：悟空》之加密
 
 http://cs101.openjudge.cn/pctbook/E28674/
@@ -782,7 +934,7 @@ int main()
 
 
 
-### M28678: 角谷猜想
+## M28678: 角谷猜想
 
 http://cs101.openjudge.cn/practice/28678/
 
@@ -1451,6 +1603,96 @@ int main() {
 
 
 
+### M04135: 月度开销
+
+binary search, http://cs101.openjudge.cn/pctbook/M04135/
+
+
+
+思路：该题与上题本质上完全一致，均为假设答案然后二分查找，用时约10分钟（一遍ac)
+
+```c++
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class Solution 
+{
+    private:
+        int N, M;
+        vector<int> cost = {};
+        int right = 0;
+        int left = -1;
+    public:
+        void get()//输入数据，并设置二分查找的初始条件
+        {
+            cin >> N >> M;
+            int x;
+            for (int i = 0; i < N; i++)
+            {
+                cin >> x;
+                right += x;
+                if(i==0)
+                {
+                    left = x;
+                }
+                else
+                {
+                    if(x > left)
+                    {
+                        left = x;
+                    }
+                }
+                cost.push_back(x);
+            }
+        }
+        void solve()
+        {
+            int ans = 0;
+           
+            while (left <= right)
+            {
+                int mid = (right + left) / 2;
+                int sum = 0;
+                int num = 0;
+                for (int x : cost)
+                {
+                    sum += x;
+                    if (sum > mid)
+                    {
+                        num++;
+                        sum = x;
+                    }
+                }
+                num++;
+                if (num > M)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    ans = mid;
+                    right = mid - 1;
+                }
+            }
+            cout << ans << endl;
+        }
+};
+
+
+int main()
+{
+    Solution s;
+    s.get();
+    s.solve();
+    return 0;
+}
+
+```
+
+
+
 
 
 ## M08210: 河中跳房子
@@ -1684,6 +1926,61 @@ int main()
 
 
 
+### 24684: 直播计票
+
+http://cs101.openjudge.cn/practice/24684/
+
+思路：用字典的方式记录选票，在查询最大票数的同时记录答案数组，非常简单，用时约10min
+
+```c++
+#include <iostream>
+#include <map>
+#include <vector>
+using namespace std;
+
+int main() {
+    map<int, int> count;  // 选项编号 -> 票数
+    int x;
+    
+    while (cin >> x) 
+    {
+        count[x]++;
+    }
+    
+    int max_votes = 0;
+    vector<int> ans_vec;
+    for (auto& p : count) 
+    {
+        if (p.second > max_votes) 
+        {
+            max_votes = p.second;
+            ans_vec.clear();
+            ans_vec.push_back(p.first);
+        }
+        else if (p.second == max_votes)
+        {
+            ans_vec.push_back(p.first);
+        }
+    }
+    
+    bool isFirst = true;
+    for (auto& ans : ans_vec)
+    {
+        if (!isFirst)
+        {
+            cout << " ";
+        }
+        cout << ans;
+        isFirst = false;
+    }
+
+    return 0;
+}
+
+```
+
+
+
 ## M27300: 模型整理
 
 sortings, AI, http://cs101.openjudge.cn/pctbook/M27300/
@@ -1843,6 +2140,76 @@ int main() {
 
 
 
+思路：核心在数据的接收上，排序可以直接sort()，只要数据接收正确就可以，用时约10分钟
+
+```c++
+#include <iostream>
+#include <sstream>
+#include <map>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+// 把参数量字符串转成数值 (统一为实际参数个数)
+long parseParam(const string& s) 
+{
+    double num = stod(s.substr(0, s.size() - 1));
+    char unit = s.back();
+    if (unit == 'M') return (long)(num * 1e6 + 0.5);
+    if (unit == 'B') return (long)(num * 1e9 + 0.5);
+    return 0; 
+}
+
+int main() 
+{
+    int n;
+    cin >> n;
+    //以模型名称为键，参数量为值
+    map<string, vector<pair<long , string>>> models;
+
+    for (int i = 0; i < n; i++) 
+    {
+        string input;
+        cin >> input;
+
+        // 拆分 模型名称 和 参数量
+        size_t pos = input.find('-');
+        string name = input.substr(0, pos);
+        string param = input.substr(pos + 1);
+
+        long value = parseParam(param);
+        models[name].push_back({ value, param });
+    }
+
+    // 按名称字典序输出
+    for (auto& temp : models) 
+    {
+        string name = temp.first;
+        auto& vec = temp.second;
+
+        // 按数值排序
+        sort(vec.begin(), vec.end());
+
+        cout << name << ": ";
+        for (int i = 0; i < vec.size(); i++) 
+        {
+            if (i > 0) cout << ", ";
+            cout << vec[i].second;
+        }
+        cout << "\n";
+    }
+
+    return 0;
+}
+
+```
+
+
+
+
+
 ## M28700: 罗马数字与整数的转换
 
 http://cs101.openjudge.cn/pctbook/M28700/
@@ -1900,6 +2267,106 @@ int main()
 
 
 
+## 58A. Chat room
+
+greedy, strings, 1000, http://codeforces.com/problemset/problem/58/A
+
+
+思路：
+逐个检查即可，用时约10min
+
+
+代码：
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+const string standard = "hello";
+
+bool check(string input)
+{
+	int p = 0;
+	for (auto i : input)
+	{
+		if (i == standard[p])  p++;
+		if (p == standard.length()) return true;
+	}
+    return false;
+}
+
+int main()
+{
+	string input;
+	cin >> input;
+	if (check(input)) 
+		cout << "YES";
+	else
+        cout << "NO";
+    return 0;
+}
+```
+
+
+
+## 118A. String Task
+
+implementation/strings, 1000, http://codeforces.com/problemset/problem/118/A
+
+思路：遇到元音continue，其余情况变成小写然后输出.和该字母，用时较长（处理输出次数太多），但代码较短
+，用时约15min（没注意到y也算元音）
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+class solution
+{
+    private:
+        string str;
+    public:
+        bool isVowels(char c)
+        {
+            return (c == 'a' || c == 'y'|| c == 'e' || c == 'i' || c == 'o' || c == 'u' 
+                || c == 'A' || c == 'Y' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+        }
+
+        bool isUppercase(char c)
+        {
+            return (c >= 'A' && c <= 'Z');
+        }
+        void getStr()
+        {
+            cin >> str;
+        }
+        void outPut()
+        {
+            for (auto i : str)
+            {
+                if (isVowels(i)) continue;
+                if (isUppercase(i)) i = tolower(i);
+                cout << '.' << i;
+            }
+        }
+};
+
+
+
+int main()
+{
+	solution ans;
+    ans.getStr();
+    ans.outPut();
+    return 0;
+}
+```
+
+
+
+
+
 ## 158B. Taxi
 
 *special problem, greedy, implementation, 1100,  https://codeforces.com/problemset/problem/158/B
@@ -1949,6 +2416,241 @@ int main()
 
 
 
+# LeetCode
+
+
+
+## E20.有效的括号
+
+stack, https://leetcode.cn/problems/valid-parentheses/
+
+思路：注意到括号的匹配与栈的后入先出是一样的，因此用栈的思路去解决，很顺利，用时约10min
+
+```cpp
+class Solution 
+{
+public:
+    bool isValid(string s) 
+    {
+        map<char, char> map = { {'(', ')'}, {'[', ']'}, {'{', '}'} };
+        vector<char> stack;
+        for (char c : s)
+        {
+            if (map.find(c) != map.end())//左括号，入栈
+            {
+                stack.push_back(c);
+            }
+            else
+            {
+                if (stack.empty() || c != map[stack.back()])//右括号，栈为空或者不匹配，返回false
+                {
+                    return false;
+                }
+                stack.pop_back();//右括号，匹配，出栈
+            }
+        }
+        return stack.empty();
+        
+    }
+};
+```
+
+
+
+## E118.杨辉三角
+
+dp, https://leetcode.cn/problems/pascals-triangle/
+
+思路：写两个循环即可,用时约10min
+
+```cpp
+class Solution 
+{
+public:
+    vector<vector<int>> generate(int numRows) 
+    {
+        vector<vector<int>> ans;
+        for (int i = 0; i < numRows; i++)
+        {
+            ans.push_back(vector<int>());
+            for (int j = 0; j < i + 1; j++)
+            {
+                if (j == 0 || j == i)
+                    ans[i].push_back(1);
+                else
+                    ans[i].push_back(ans[i - 1][j - 1] + ans[i - 1][j]);
+            }
+        }
+        return ans;
+
+    }
+};
+```
+
+
+
+## M46.全排列
+
+backtracking, https://leetcode.cn/problems/permutations/
+
+思路：写一个回溯型的递归就行，非常简单，用时约15min
+
+```cpp
+class Solution 
+{
+public:
+    void backtrack(vector<int>& nums, vector<int>& current, vector<bool>& used, vector<vector<int>>& ans)
+    {
+        if (current.size() == nums.size())
+        {
+            ans.push_back(current);
+            return;
+        }
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (used[i]) continue;
+            used[i] = true;
+            current.push_back(nums[i]);
+            backtrack(nums, current, used, ans);
+            //回溯
+            current.pop_back();
+            used[i] = false;
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) 
+    {
+        vector<vector<int>> ans;
+        
+        vector<int> current;
+        vector<bool> used(nums.size(), false);
+        backtrack(nums, current, used, ans);
+        return ans;
+
+    }
+};
+```
+
+
+
+## M78.子集
+
+backtracking, https://leetcode.cn/problems/subsets/
+
+思路：和 `M46.全排列` 相似，将上题递归函数的“== nums.size()”换成for(int k = 0 ; k < nums.size() ; k++) 即可，其余对应稍加修改即可。
+
+
+
+## E283.移动零
+
+stack, two pinters, https://leetcode.cn/problems/move-zeroes/
+
+
+思路：只需要将0放到最后即可，用时约10min
+
+```cpp
+class Solution
+{
+public:
+    void moveZeroes(vector<int>& nums)
+    {
+        int n = nums.size();
+        vector<int> temp;
+        for (int i = 0; i < n; i++)
+        {
+            if (nums[i] != 0)
+                temp.push_back(nums[i]);
+        }
+        for (int i = 0; i < n; i++)
+        {
+            if (i < temp.size())
+                nums[i] = temp[i];
+            else
+                nums[i] = 0;
+        }
+
+    }
+};
+```
+
+
+
+## E1078: Bigram分词
+
+https://leetcode.cn/problems/occurrences-after-bigram/
+
+思路：
+注意到text是以空格分割的，因此可以用流函数来构建wordList，再寻找符合条件的答案插入到结果列表即可，用时约10min
+
+```cpp
+class Solution
+{
+public:
+    vector<string> findOcurrences(string text, string first, string second)
+    {
+        vector<string> wordList;
+        stringstream ss(text);
+        string word;
+        while (ss >> word) 
+        {
+            wordList.push_back(word);
+        }
+
+        vector<string> result;
+        for (int i = 0; i < wordList.size() - 2; i++)
+        {
+            if (wordList[i] == first && wordList[i + 1] == second)
+            {
+                result.push_back(wordList[i + 2]);
+            }
+        }
+        return result;
+    }
+};
+```
+
+
+
+## M1760.袋子里最少数目的球
+
+binary search, https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/
+
+
+
+
+思路：一开始的想法是将最多的一个袋子拆成 m + n 暴力回溯，显然太暴力了，后来看了题解，反向设置最终目标加二分法才是最合适的，用时约30分钟
+
+```c++
+class Solution 
+{
+public:
+    int minimumSize(vector<int>& nums, int maxOperations) 
+    {
+        int left = 1, right = *max_element(nums.begin(), nums.end());
+        int ans = 0;
+        while (left <= right)
+        {
+            int mid = (right + left) / 2;
+            long long op = 0;
+            for(int x : nums)
+            {
+                op += (x - 1) / mid;
+            }
+            if (op <= maxOperations)
+            {
+                ans = mid;
+                right = mid - 1;
+            }
+            else
+                left = mid + 1;
+        }
+        return ans;
+    }
+};
+
+```
+
+
+
 
 
 # Other
@@ -1961,16 +2663,16 @@ https://programming.pku.edu.cn/problem/7f89efad1537471fae528e9c88601ee6/
 
 根据参数，画出矩形。
 
-#### 关于输入
+**关于输入**
 
 输入由多行组成，每行四个参数：前两个参数为整数，依次代表矩形的高和宽（高不少于3行，宽不少于5行）；第三个参数是一个字符，表示用来画图的矩形符号；第四个参数为1或0，0代表空心，1代表实心。
 当用户输入0时表示输入结束。
 
-#### 关于输出
+**关于输出**
 
 输出画出的图形
 
-#### 例子输入
+例子输入
 
 ```
 6 5 * 1
@@ -1978,7 +2680,7 @@ https://programming.pku.edu.cn/problem/7f89efad1537471fae528e9c88601ee6/
 0
 ```
 
-#### 例子输出
+例子输出
 
 ```
 *****
@@ -1996,7 +2698,7 @@ https://programming.pku.edu.cn/problem/7f89efad1537471fae528e9c88601ee6/
 @@@@@@@
 ```
 
-#### 提示信息
+提示信息
 
 对于一个题里有多组测试数据的题目，可以读取一组测试数据后直接输出该组的运行结果，不必把多组测试数据储存起来后一起输出。
 
