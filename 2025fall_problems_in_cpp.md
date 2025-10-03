@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                        
+>                                           
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                        
+>                                           
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                        
+>                                           
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                        
+>                                           
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                        
+>                                           
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -785,42 +785,6 @@ int main()
 ```
 
 
-
-## M28664: 验证身份证号 
-
-http://cs101.openjudge.cn/pctbook/M28664/
-
-
-
-思路：打表，优化时间复杂度
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int n;
-    int c[17] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
-    char ref[11] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
-    cin >> n;
-    string ID;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> ID;
-        int check = 0;
-        for (int j = 0; j < ID.length() - 1; j++)
-            check += (ID[j] - '0') * c[j];
-        int l = check % 11;
-        char end = ID.back();
-        if (ref[l] == end)
-            cout << "YES" << endl;
-        else
-            cout << "NO" << endl;
-    }
-    return 0;
-}
-```
 
 
 
@@ -2269,6 +2233,44 @@ int main()
     return 0;
 }
 
+```
+
+
+
+## M28664: 验证身份证号 
+
+http://cs101.openjudge.cn/pctbook/M28664/
+
+
+
+思路：打表，优化时间复杂度
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    int c[17] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+    char ref[11] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
+    cin >> n;
+    string ID;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> ID;
+        int check = 0;
+        for (int j = 0; j < ID.length() - 1; j++)
+            check += (ID[j] - '0') * c[j];
+        int l = check % 11;
+        char end = ID.back();
+        if (ref[l] == end)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
+    return 0;
+}
 ```
 
 
