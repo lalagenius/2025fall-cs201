@@ -1,6 +1,6 @@
 #  Problems in OJ, CF & others
 
-*Updated 2025-10-02 23:02 GMT+8*
+*Updated 2025-10-03 23:05 GMT+8*
  *Compiled by Hongfei Yan (2025 Fall)*
 
 
@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                              
+>                                                 
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                              
+>                                                 
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                              
+>                                                 
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                              
+>                                                 
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                              
+>                                                 
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -709,6 +709,224 @@ int main() {
 }
 
 ```
+
+
+
+## E18161: 矩阵运算
+
+matrices, http://cs101.openjudge.cn/pctbook/E18161/
+
+请使用`@`矩阵相乘运算符。
+
+思路：按定义写即可。
+
+```cpp
+#include <iostream>
+#include <map>
+#include <vector>
+#include <sstream>
+using namespace std;
+
+
+class marix
+{
+    private:
+        int index = 0;//用来表征能否进行运算
+
+    public:
+        int row, col;
+        vector<vector<int>> mar;
+
+        void getMarix()
+        {
+            cin>> row >> col;
+            mar.resize(row, vector<int>(col, 0));
+            for(int i = 0; i < row; i++)
+            {
+                for(int j = 0; j < col; j++)
+                {
+                    cin >> mar[i][j];
+                }
+            }
+            index = 0;
+        }
+
+        marix operator+(const marix m)
+        {
+            if(row != m.row || col != m.col|| index == 1)
+            {   
+                index = 1;
+                return *this;
+            }
+            marix res;
+            res.row = row;
+            res.col = col;
+            res.mar.resize(row, vector<int>(col, 0));
+            for(int i = 0; i < row; i++)
+            {
+                for(int j = 0; j < col; j++)
+                {
+                    res.mar[i][j] = mar[i][j] + m.mar[i][j];
+                }
+            }
+            return res;
+        }
+
+        marix operator*(const marix m)
+        {
+            if(col != m.row || index == 1)
+            {
+                index = 1;
+                return *this;
+            }
+            marix res;
+            res.row = row;
+            res.col = m.col;
+            res.mar.resize(row, vector<int>(m.col, 0));
+            for(int i = 0; i < row; i++)
+            {
+                for(int j = 0; j < m.col; j++)
+                {
+                    for (int k = 0; k < col; k++)
+                    {
+                        res.mar[i][j] += mar[i][k] * m.mar[k][j];
+                    }
+                }
+            }
+            return res;
+        }
+
+        void printMarix()
+        {
+            if(index == 1)
+                cout << "Error!" ;
+            else
+            {
+                for(int i = 0; i < row; i++)
+                {
+                    if (i) cout << endl;
+                    for(int j = 0; j < col; j++)
+                    {
+                        if (j) cout << " ";
+                        cout << mar[i][j] ;
+                    } 
+                }
+            }
+        }
+
+};
+
+
+int main() 
+{
+    marix A, B, C, D;
+    A.getMarix();
+    B.getMarix();
+    C.getMarix();
+    D= A * B + C;
+    D.printMarix();
+}
+```
+
+
+
+## E19942: 二维矩阵上的卷积运算
+
+matrices, http://cs101.openjudge.cn/pctbook/E19942/
+
+
+思路：定义一个卷积函数即可，一遍ac，用时约15min
+
+```cpp
+#include <iostream>
+#include <map>
+#include <vector>
+#include <sstream>
+using namespace std;
+
+
+class marix
+{
+    private:
+        int index = 0;//用来表征能否进行运算
+
+    public:
+        int row, col;
+        vector<vector<int>> mar;
+
+        void setSize()
+        {
+            cin >> row >> col;
+            mar.resize(row, vector<int>(col, 0));
+        }
+
+        void getMarix()
+        {
+            for(int i = 0; i < row; i++)
+            {
+                for(int j = 0; j < col; j++)
+                {
+                    cin >> mar[i][j];
+                }
+            }
+            index = 0;
+        }
+
+        void printMarix()
+        {
+            if(index == 1)
+                cout << "Error!" ;
+            else
+            {
+                for(int i = 0; i < row; i++)
+                {
+                    if (i) cout << endl;
+                    for(int j = 0; j < col; j++)
+                    {
+                        if (j) cout << " ";
+                        cout << mar[i][j] ;
+                    } 
+                }
+            }
+        }
+
+};
+
+marix convolution(marix A, marix B)
+{
+    marix C;
+    C.row = A.row - B.row + 1;
+    C.col = A.col - B.col + 1;
+    C.mar.resize(C.row, vector<int>(C.col, 0));
+    for(int i = 0; i < C.row; i++)
+    {
+        for(int j = 0; j < C.col; j++)
+        {
+            for(int k = 0; k < B.row; k++)
+            {
+                for(int l = 0; l < B.col; l++)
+                {
+                    C.mar[i][j] += A.mar[i + k][j + l] * B.mar[k][l];
+                }
+            }
+        }
+    }
+    return C;
+}
+
+int main() 
+{
+    marix A, B, C;
+    A.setSize();
+    B.setSize();
+    A.getMarix();
+    B.getMarix();
+    C = convolution(A, B);
+    C.printMarix();
+}
+```
+
+
 
 
 
@@ -2330,6 +2548,126 @@ int main()
 
 
 
+# Tough
+
+## T02488: A Knight's Journey
+
+backtracking, http://cs101.openjudge.cn/practice/02488/
+
+思路：dfs暴力求解，没有一点剪枝，一遍ac，用时约30min
+
+```cpp
+#include <iostream>
+#include <map>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+using namespace std;
+
+const vector<pair<int,int>> directions = {{-2,-1},{-2,1},{-1,-2},{-1,2},{1,-2},{1,2},{2,-1},{2,1}};
+
+class Solution
+{
+	public:
+		int row , col;
+		vector<vector<bool>> isVisited;
+		bool isFind;
+		vector<pair<int,int>> path;
+		int step;
+		int curX, curY;
+
+		void initialize()
+		{
+			cin >> col >> row;
+			isVisited.resize(row,vector<bool>(col,false));
+			isFind = false;
+			path.clear();
+            step = 0;
+			curX = curY = 0;
+		}
+
+		bool isInBoard(int x, int y)
+		{
+			return (x >= 0 && x < row && y >= 0 && y < col);
+		}
+
+		void findPath( )
+		{
+            if(isFind) return;
+            if(!isInBoard(curX,curY)) return;
+            if(isVisited[curX][curY]) return;
+			if (step == row * col - 1)
+			{
+                isFind = true;
+                path.push_back({curX,curY});
+                return;
+			}
+           
+			for (auto dir : directions)
+			{
+				isVisited[curX][curY] = true;
+				path.push_back({ curX,curY });
+                curX += dir.first;
+                curY += dir.second;
+                step++;
+                findPath();
+                if (isFind) return;
+				step--;
+				curX -= dir.first;
+                curY -= dir.second;
+				path.pop_back();
+				isVisited[curX][curY] = false;
+			}
+			
+		}
+
+		void solve()
+		{
+			for (int curX = 0; curX < row; curX++)
+			{
+				for (int curY = 0; curY < col; curY++)
+				{
+					if(isFind) return;
+                    findPath();
+				}
+			}
+		}
+
+		void printAns()
+		{
+			solve();
+			if (isFind)
+			{
+				for (auto p : path)
+					cout << char(p.first + (int)'A') << p.second + 1;
+			}
+			else
+				cout << "impossible" ;
+		}
+};
+
+int main()
+{
+	int n;
+    cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		Solution s;
+        s.initialize();
+		if (i) cout << endl;
+		cout <<"Scenario #"<< i + 1 << ":" << endl;
+        s.printAns();
+        cout << endl;
+	}
+	return 0;
+}
+
+```
+
+
+
+
+
 # Codeforces
 
 
@@ -2524,36 +2862,6 @@ public:
 
 
 
-## E118.杨辉三角
-
-dp, https://leetcode.cn/problems/pascals-triangle/
-
-思路：写两个循环即可,用时约10min
-
-```cpp
-class Solution 
-{
-public:
-    vector<vector<int>> generate(int numRows) 
-    {
-        vector<vector<int>> ans;
-        for (int i = 0; i < numRows; i++)
-        {
-            ans.push_back(vector<int>());
-            for (int j = 0; j < i + 1; j++)
-            {
-                if (j == 0 || j == i)
-                    ans[i].push_back(1);
-                else
-                    ans[i].push_back(ans[i - 1][j - 1] + ans[i - 1][j]);
-            }
-        }
-        return ans;
-
-    }
-};
-```
-
 
 
 ## M46.全排列
@@ -2604,6 +2912,100 @@ public:
 backtracking, https://leetcode.cn/problems/subsets/
 
 思路：和 `M46.全排列` 相似，将上题递归函数的“== nums.size()”换成for(int k = 0 ; k < nums.size() ; k++) 即可，其余对应稍加修改即可。
+
+
+
+## E118.杨辉三角
+
+dp, https://leetcode.cn/problems/pascals-triangle/
+
+思路：写两个循环即可,用时约10min
+
+```cpp
+class Solution 
+{
+public:
+    vector<vector<int>> generate(int numRows) 
+    {
+        vector<vector<int>> ans;
+        for (int i = 0; i < numRows; i++)
+        {
+            ans.push_back(vector<int>());
+            for (int j = 0; j < i + 1; j++)
+            {
+                if (j == 0 || j == i)
+                    ans[i].push_back(1);
+                else
+                    ans[i].push_back(ans[i - 1][j - 1] + ans[i - 1][j]);
+            }
+        }
+        return ans;
+
+    }
+};
+```
+
+
+
+## E160.相交链表
+
+two pinters, https://leetcode.cn/problems/intersection-of-two-linked-lists/
+
+思路：一路存地址即可，用时约20min
+
+```cpp
+class Solution 
+{
+public:
+    ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) 
+	{
+        map<ListNode*, int> m;
+		while (headA != NULL)
+		{
+            m[headA] = 1;
+            headA = headA->next;
+
+		}
+		while (headB != NULL)
+		{
+            if (m.find(headB) != m.end())
+                return headB;
+            headB = headB->next;
+		}
+        return NULL;
+
+    }
+};
+```
+
+
+
+## E206.反转链表
+
+three pinters, recursion, https://leetcode.cn/problems/reverse-linked-list/
+
+思路：直接写就行，0ms，一遍过，用时约10min
+
+```cpp
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* cur = head;
+        while (cur) 
+        {
+            ListNode* nxt = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = nxt;
+        }
+        head = prev;
+        return head;
+    }
+};
+```
+
+
 
 
 
