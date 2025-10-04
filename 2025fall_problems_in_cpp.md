@@ -1,13 +1,13 @@
 #  Problems in OJ, CF & others
 
-*Updated 2025-10-04 13:33 GMT+8*
+*Updated 2025-10-04 16:50 GMT+8*
  *Compiled by Hongfei Yan (2025 Fall)*
 
 
 
 > Logs:
 >
-> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】同学的CPP代码。
+> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】、【王乾旭 信科】同学的CPP代码。
 >
 > 鉴于每学期都有同学偏好C++编程，本学期除维护Python题解外，也开始提供C++题解支持。
 
@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                    
+>                                                       
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                    
+>                                                       
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                    
+>                                                       
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                    
+>                                                       
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                    
+>                                                       
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -934,31 +934,31 @@ int main()
 
 http://cs101.openjudge.cn/practice/20742/
 
-思路：直接递归就可以，代码中采用了记录已访问过元素的值的方式，使运行时间降到了1ms，用时约10min
+思路：当 n = 0、1、2 时，直接返回对应的初始值。
+从 T3 开始，每一项等于前三项之和。可以用三个变量循环更新，节省空间。
 
 ```c++
 #include <iostream>
-
 using namespace std;
 
-int T[100] = {0, 1, 1, 2};
-
-int T_n(int n)
-{
-    	if (n > 3 && T[n] == 0)
-    	{
-    		T[n] = T_n(n-1)+T_n(n-2)+T_n(n-3);
-    	}
-    	if (n == 0) return 0;
-		if(n==1||n==2) return 1;
-        return T[n];
+int tribonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1 || n == 2) return 1;
+    int t0 = 0, t1 = 1, t2 = 1, t3;
+    for (int i = 3; i <= n; ++i) {
+        t3 = t0 + t1 + t2;
+        t0 = t1;
+        t1 = t2;
+        t2 = t3;
+    }
+    return t2;
 }
 
-int main()
-{
-	int n;
-	cin >> n;
-    cout << T_n(n);
+int main() {
+    int n;
+    cin >> n;
+    cout << tribonacci(n) << endl;
+    return 0;
 }
 ```
 
@@ -968,8 +968,7 @@ int main()
 
 http://cs101.openjudge.cn/practice/22359/
 
-思路：
-直接判断 i 和 n-i 是不是质数即可，不过令我震惊的是完全没有任何优化耗时竟然只有1ms，这就是c++的速度吗？用时约10min
+思路：枚举从 2 到 n/2 的所有数 A，若 A 和 n-A 都是素数，则输出这两个数并结束。
 
 ```c++
 #include <iostream>
@@ -986,12 +985,11 @@ bool isPrime(int num)
     return true;
 }
 
-
 int main()
 {
     int n;
     cin >> n;
-    for (int i = 2; i <= n; i++)
+    for (int i = 2; i <= n / 2; i++)
     {
         if (isPrime(i) && isPrime(n - i))
         {
@@ -1000,9 +998,82 @@ int main()
         }
     }
 }
+
 ```
 
 
+
+## E23563: 多项式时间复杂度
+
+http://cs101.openjudge.cn/pctbook/E23563/
+
+
+
+解题步骤
+
+1. **分割字符串**
+    按照 `'+'` 拆分每一项。
+2. **解析每一项**
+   - 可能形式：
+     - `ax^b` （如 `6n^2`）
+     - `n^b`   （相当于系数 1）
+     - `an^b`  （如 `99n^10`）
+     - `0n^b`  （等价于 0）
+     - 纯常数 `5` （等价于 `5n^0`）
+   - 提取指数 b，如果该项系数为 0，则忽略。
+3. **找最大指数**
+    遍历所有项，记录最大 `b`。
+4. **输出**
+    输出 `n^最大指数`。
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    int maxExp = 0;  // 记录最大指数
+    stringstream ss(s);
+    string term;
+
+    while (getline(ss, term, '+')) {
+        int coef = 1;  // 默认系数
+        int exp = 0;   // 默认指数
+
+        size_t nPos = term.find('n');
+        if (nPos == string::npos) {
+            // 没有 n，纯常数项
+            coef = stoi(term);
+            exp = 0;
+        } else {
+            // 处理系数
+            if (nPos == 0) {
+                coef = 1; // "n^b"
+            } else {
+                coef = stoi(term.substr(0, nPos));
+            }
+
+            // 处理指数
+            size_t powPos = term.find('^');
+            if (powPos == string::npos) {
+                exp = 1; // 只有 "n"，即 n^1
+            } else {
+                exp = stoi(term.substr(powPos + 1));
+            }
+        }
+
+        if (coef != 0) {
+            maxExp = max(maxExp, exp);
+        }
+    }
+
+    cout << "n^" << maxExp << endl;
+    return 0;
+}
+
+```
 
 
 
@@ -1281,7 +1352,7 @@ if __name__ == "__main__":
 
 
 
-### M01017: 装箱问题
+## M01017: 装箱问题
 
 greedy, http://cs101.openjudge.cn/pctbook/M01017/
 
@@ -2225,7 +2296,7 @@ int main()
 
 http://cs101.openjudge.cn/practice/24684/
 
-思路：用字典的方式记录选票，在查询最大票数的同时记录答案数组，非常简单，用时约10min
+思路：用字典的方式记录选票，在查询最大票数的同时记录答案数组
 
 ```c++
 #include <iostream>
@@ -2725,11 +2796,7 @@ int main()
 greedy, strings, 1000, http://codeforces.com/problemset/problem/58/A
 
 
-思路：
-逐个检查即可，用时约10min
-
-
-代码：
+思路：逐个检查即可，用时约10min
 
 ```c++
 #include <iostream>
@@ -2812,6 +2879,43 @@ int main()
 	solution ans;
     ans.getStr();
     ans.outPut();
+    return 0;
+}
+```
+
+
+
+思路：
+
+遍历字符串，将字母转为小写；
+
+若是元音（a, o, y, e, u, i）则跳过；
+
+否则在结果中添加 '.' 和该字母；
+
+最后输出处理后的字符串。
+
+代码：
+
+```c++
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string s, result;
+    cin >> s;
+
+    for (char c : s) {
+        c = tolower(c);
+        if (c == 'a' || c == 'o' || c == 'y' || c == 'e' || c == 'u' || c == 'i')
+            continue; // 跳过元音
+        result += '.';
+        result += c;
+    }
+
+    cout << result << endl;
     return 0;
 }
 ```
