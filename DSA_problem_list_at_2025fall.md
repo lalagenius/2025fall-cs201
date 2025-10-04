@@ -89,7 +89,7 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 | 0903 | 04093: 倒排索引查询| data structures, IR | Tough | http://cs101.openjudge.cn/practice/04093/     | 
 | 0903 | 2906.构造乘积矩阵  | matrices, prefix sum | Medium | https://leetcode.cn/problems/construct-product-matrix/      | 
 | 0902 | 06640: 倒排索引    | data structures, IR | Medium | http://cs101.openjudge.cn/practice/06640   |
-| 0902 | 1078.Bigram分词    | strings, NLP    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
+| 0902 | 1078.Bigram分词    | two pinters, strings, NLP    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
 | 0901 | 03151: Pots       | bfs    | Medium    | http://cs101.openjudge.cn/practice/03151      | 
 | 0901 | 121.买卖股票的最佳时机   | dp       | Easy  | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/          |
 | 0831 | 04067: 回文数字    | queue    | Easy | http://cs101.openjudge.cn/pctbook/E04067          |
