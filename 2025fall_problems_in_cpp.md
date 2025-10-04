@@ -1,13 +1,13 @@
 #  Problems in OJ, CF & others
 
-*Updated 2025-10-03 23:05 GMT+8*
+*Updated 2025-10-04 13:33 GMT+8*
  *Compiled by Hongfei Yan (2025 Fall)*
 
 
 
 > Logs:
 >
-> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】同学的CPP代码。
+> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】同学的CPP代码。
 >
 > 鉴于每学期都有同学偏好C++编程，本学期除维护Python题解外，也开始提供C++题解支持。
 
@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                 
+>                                                    
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                 
+>                                                    
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                 
+>                                                    
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                 
+>                                                    
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                 
+>                                                    
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -1278,6 +1278,54 @@ if __name__ == "__main__":
 >   再把 4 字节解析出来，转成 Python 的 `float`（C double），但精度已经丢失，只保留了单精度的部分。`'f'` 表示解析一个单精度浮点，所以返回的 tuple 里有 **1 个元素**；这里取 `[0]`，拿到里面唯一的那个值。
 >
 > 这样就可以 **模拟 C++ 里的 float 精度**。
+
+
+
+### M01017: 装箱问题
+
+greedy, http://cs101.openjudge.cn/pctbook/M01017/
+
+
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int a[10], sum, a2, a1;
+bool flag;
+int main(){
+    while(1){
+        flag = 0;
+        for(int i = 1; i <= 6; i++){
+            scanf("%d", &a[i]);
+            if(a[i])
+                flag = 1;
+        }
+        if(!flag)
+            break;
+
+        sum = a[6] + a[5] + a[4] + a[3]/4 + (a[3]%4 ? 1 : 0);
+        a2 = a[4] * 5;
+        a1 = a[5]*11 + a[4]*20 + (a[3]%4 ? ((4 - a[3]%4)*9) : 0);
+        if(a[3]%4 == 3) a2 += 1;
+        else if(a[3]%4 == 2) a2 += 3;
+        else if(a[3]%4 == 1) a2 += 5;
+        a1 -= 4 * min(a[2], a2);
+        a[2] -= a2;
+        if(a[2] > 0){
+            sum += a[2]/9;
+            if(a[2]%9){
+                sum++;
+                a1 += 36 - a[2]%9 * 4;
+            }
+        }
+        a[1] -= a1;
+        if(a[1] > 0)
+            sum += a[1]/36 + (a[1]%36 ? 1 : 0);
+        printf("%d\n", sum);
+    }
+    return 0;
+}
+```
 
 
 
@@ -2815,6 +2863,98 @@ int main()
     return 0;
 }
 
+```
+
+
+
+### 230B. T-primes（选做）
+
+binary search, implementation, math, number theory, 1300, http://codeforces.com/problemset/problem/230/B
+
+
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 1e6;
+int T;
+long long a;
+bool np[N + 5]; // np[i] 表示 i 是否为合数（非质数）
+
+// 检查 a 是否为完全平方数且其平方根是奇数质数
+bool check() {
+    if (a == 4) return 1;  // 特殊情况：4 = 2^2，但 2 是偶数质数，但题目可能允许？这里返回 true
+
+    if (a == 1 || a % 2 == 0) return 0;  // 奇数且不为 1 和偶数
+
+    long long s = sqrt(a);
+    if (s * s != a || np[s]) return 0;  // 不是完全平方数 或 平方根不是质数
+    return 1;
+}
+
+int main() {
+    // 使用埃拉托斯特尼筛法预处理出所有小于等于 N 的合数
+    for (int i = 3; i * i <= N; i += 2) {
+        if (np[i]) continue;
+        for (int j = i; j * i <= N; j += 2) {
+            np[j * i] = 1;
+        }
+    }
+
+    // 输入测试次数
+    cin >> T;
+    while (T--) {
+        cin >> a;
+        if (check()) {
+            printf("YES\n");
+        } else {
+            printf("NO\n");
+        }
+    }
+
+    return 0;
+}
+```
+
+
+
+
+
+## 1879B. Chips on the Board
+
+constructive algorithms, greedy, 900, https://codeforces.com/problemset/problem/1879/B
+
+
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 300005, inf = 1e9;
+int T, n, a, b, min1, min2;
+long long sum1, sum2;
+
+int main() {
+    scanf("%d", &T);
+    while (T--) {
+        sum1 = sum2 = 0;
+        min1 = min2 = inf;
+        scanf("%d", &n);
+        for (int i = 1; i <= n; i++) {
+            scanf("%d", &a);
+            sum1 += 1ll * a;
+            min1 = min(min1, a);
+        }
+        for (int i = 1; i <= n; i++) {
+            scanf("%d", &b);
+            sum2 += 1ll * b;
+            min2 = min(min2, b);
+        }
+        printf("%lld\n", min(1ll * min1 * n + sum2, 1ll * min2 * n + sum1));
+    }
+    return 0;
+}
 ```
 
 
