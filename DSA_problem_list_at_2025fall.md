@@ -19,8 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
-| 1006 | 3.无重复字符的最长子串 | sliding window     | Medium | https://leetcode.cn/problems/longest-substring-without-repeating-characters/          |
 | 1006 | 25.K个一组翻转链表| linked list, recursion  | Tough | https://leetcode.cn/problems/reverse-nodes-in-k-group/          |
+| 1006 | 24.两两交换链表中的节点 | linked list, recursion     | Medium | https://leetcode.cn/problems/swap-nodes-in-pairs/  |
 | 1005 | 142.环形链表II  | hash table, linked list, two pointers   | Medium | https://leetcode.cn/problems/linked-list-cycle-ii/          |
 | 1005 | 141.环形链表    | hash table, linked list, two pointers   | Easy | https://leetcode.cn/problems/linked-list-cycle/          |
 | 1004 | 1366D. Two Divisors | constructive algorithm, math, number theory   | 2000 | https://codeforces.com/problemset/problem/1366/D          |
