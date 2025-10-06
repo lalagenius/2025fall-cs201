@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-10-05 17:21 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-10-06 23:08 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 1007 | https://leetcode.cn/problems/add-two-numbers/      | linked list, two pointers   | Medium | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/          |
+| 1007 | 2.两数相加    | linked list  | Medium | https://leetcode.cn/problems/add-two-numbers/          |
 | 1006 | 25.K个一组翻转链表| linked list, recursion  | Tough | https://leetcode.cn/problems/reverse-nodes-in-k-group/          |
 | 1006 | 24.两两交换链表中的节点 | linked list, recursion     | Medium | https://leetcode.cn/problems/swap-nodes-in-pairs/  |
 | 1005 | 142.环形链表II  | hash table, linked list, two pointers   | Medium | https://leetcode.cn/problems/linked-list-cycle-ii/          |
