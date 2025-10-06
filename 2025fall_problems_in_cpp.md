@@ -7,7 +7,7 @@
 
 > Logs:
 >
-> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】、【王乾旭 信科】同学的CPP代码。
+> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】、【王乾旭 信科】、【刘思哲 25工学院】同学的CPP代码。
 >
 > 鉴于每学期都有同学偏好C++编程，本学期除维护Python题解外，也开始提供C++题解支持。
 
@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                          
+>                                                             
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                          
+>                                                             
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                          
+>                                                             
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                          
+>                                                             
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                          
+>                                                             
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -1396,6 +1396,38 @@ int main(){
         if(a[1] > 0)
             sum += a[1]/36 + (a[1]%36 ? 1 : 0);
         printf("%d\n", sum);
+    }
+    return 0;
+}
+```
+
+
+
+```python
+# 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int remain[4] = {0, 5, 3, 1};
+    while(true) {
+        int arr[6], count=0;
+        bool status=false;
+        for(int i=0; i<6; i++)  {
+            cin>>arr[i];
+            if(arr[i]!=0) status=true;
+        }
+        if(status == false){break;}
+        count += arr[5]+arr[4]+arr[3]+(arr[2]+3)/4;
+        int num1 = arr[3]*5+remain[arr[2]%4];
+        if(arr[1]>num1) {
+            count += ((arr[1]-num1)+8)/9;
+        }
+        int num2=count*36-25*arr[4]-36*arr[5]-16*arr[3]-9*arr[2]-4*arr[1];
+        if(arr[0]>num2) {
+            count += ((arr[0]-num2)+35)/36;
+        }
+        cout<<count<<'\n';
     }
     return 0;
 }
@@ -2794,6 +2826,47 @@ int main()
 
 
 
+## 34B. Sale
+
+greedy, sorting, 900, https://codeforces.com/problemset/problem/34/B
+
+
+
+```python
+# #include <iostream>
+#include <queue>
+using namespace std;
+
+int main(){
+    int a,b,h;
+    h=0;
+    cin>>a>>b;
+    priority_queue<int> pq;
+    while(a--){
+        int x;
+        cin>>x;
+        if(x>=0) continue;
+        pq.push(-x);
+        h-=x;
+    }
+    int ans=0;
+    if(b>pq.size()) cout<<h<<'\n';
+    else{
+        for(int i=0;i<b;i++){
+            ans+=pq.top();
+            pq.pop();
+        }
+        cout<<ans<<'\n';
+    }
+    return 0;
+}
+
+```
+
+
+
+
+
 ## 58A. Chat room
 
 greedy, strings, 1000, http://codeforces.com/problemset/problem/58/A
@@ -2974,7 +3047,47 @@ int main()
 
 
 
-### 230B. T-primes（选做）
+## 160A. Twins
+
+greedy, sortings, 900, https://codeforces.com/problemset/problem/160/A
+
+
+
+思路：怎么全是一个pq能解决的问题
+
+```python
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main(){
+    priority_queue<int> pq;
+    int a,h=0;
+    cin>>a;
+    while(a--){
+        int x;
+        cin>>x;
+        h+=x;
+        pq.push(x);
+    }
+    int amount=0;
+    int num=0;
+    while(num<=h/2&&!pq.empty()){
+        num+=pq.top();
+        pq.pop();
+        amount++;
+    }
+    cout<<amount<<'\n';
+    return 0;
+}
+
+```
+
+
+
+
+
+## 230B. T-primes
 
 binary search, implementation, math, number theory, 1300, http://codeforces.com/problemset/problem/230/B
 
@@ -3020,6 +3133,43 @@ int main() {
         }
     }
 
+    return 0;
+}
+```
+
+
+
+思路：确实体会到了cpp处理大整数太麻烦了。。。
+
+```python
+#include<iostream>
+#include<cmath>
+#include<unordered_set>
+#include<vector>
+using namespace std;
+
+int main(){
+    int t;
+    vector<bool> check(1000001,true);
+    unordered_set<int> st;
+    cin>>t;
+    for(int i=2;i<=1000000;i++){
+        if(check[i]) {
+            st.insert(i);
+            if((long long)i*i<1000000){
+                for(long long j=i*i;j<=1000000;j+=i){
+                    check[j]=false;
+                }
+            }
+        }
+    }
+    while(t--){
+        long long a;
+        cin>>a;
+        long long c = sqrt(a);
+        if(c*c==a && st.find(c)!=st.end()){cout<<"YES"<<'\n';}
+        else {cout<<"NO"<<'\n';}
+    }
     return 0;
 }
 ```
