@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                             
+>                                                                
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                             
+>                                                                
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                             
+>                                                                
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                             
+>                                                                
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                             
+>                                                                
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -2094,6 +2094,56 @@ int main() {
 
 
 
+## M06640: 倒排索引
+
+data structures, http://cs101.openjudge.cn/pctbook/M06640/
+
+思路：用 map<string, set<int>> 建立倒排索引：key 为单词，value 为出现该单词的文档编号集合。
+
+```c++
+#include <iostream>
+#include <map>
+#include <set>
+#include <string>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    map<string, set<int>> invertedIndex;
+
+    for (int i = 1; i <= N; i++) {
+        int c;
+        cin >> c;
+        for (int j = 0; j < c; j++) {
+            string word;
+            cin >> word;
+            invertedIndex[word].insert(i);
+        }
+    }
+
+    int M;
+    cin >> M;
+    while (M--) {
+        string query;
+        cin >> query;
+        if (invertedIndex.count(query) == 0)
+            cout << "NOT FOUND\n";
+        else {
+            bool first = true;
+            for (int id : invertedIndex[query]) {
+                if (!first) cout << " ";
+                cout << id;
+                first = false;
+            }
+            cout << "\n";
+        }
+    }
+    return 0;
+}
+```
+
 
 
 ## M08210: 河中跳房子
@@ -2861,6 +2911,90 @@ int main(){
     return 0;
 }
 
+```
+
+
+
+思路：按字典序选择起点与扩展顺序，保证得到的是全局字典序最小的完整骑士巡游路径；
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Pos { int r, c; }; 
+
+string label(int r, int c) { // 转成例如 "A1"
+    string s;
+    s.push_back(char('A' + c));
+    s += to_string(r + 1);
+    return s;
+}
+
+int dr[8] = { 2, 2, 1, 1,-1,-1,-2,-2};
+int dc[8] = { 1,-1, 2,-2, 2,-2, 1,-1};
+
+bool dfs(int p, int q, Pos u, int step, vector<vector<int>>& vis, vector<Pos>& path) {
+    if (step == p * q) return true;
+
+
+    vector<Pos> cand;
+    for (int k = 0; k < 8; ++k) {
+        int nr = u.r + dr[k], nc = u.c + dc[k];
+        if (nr >= 0 && nr < p && nc >= 0 && nc < q && !vis[nr][nc]) {
+            cand.push_back({nr, nc});
+        }
+    }
+    sort(cand.begin(), cand.end(), [&](const Pos& a, const Pos& b){
+        // 先按列字母，再按行数字
+        if (a.c != b.c) return a.c < b.c;
+        return a.r < b.r;
+    });
+
+    for (auto v : cand) {
+        vis[v.r][v.c] = 1;
+        path.push_back(v);
+        if (dfs(p, q, v, step + 1, vis, path)) return true;
+        path.pop_back();
+        vis[v.r][v.c] = 0;
+    }
+    return false;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n; 
+    if (!(cin >> n)) return 0;
+    for (int tc = 1; tc <= n; ++tc) {
+        int p, q; // p 行(数字 1..p), q 列(字母 A..)
+        cin >> p >> q;
+
+        cout << "Scenario #" << tc << ":\n";
+
+        bool found = false;
+       
+        for (int c0 = 0; c0 < q && !found; ++c0) {
+            for (int r0 = 0; r0 < p && !found; ++r0) {
+                vector<vector<int>> vis(p, vector<int>(q, 0));
+                vector<Pos> path;
+                vis[r0][c0] = 1;
+                path.push_back({r0, c0});
+                if (dfs(p, q, {r0, c0}, 1, vis, path)) {
+                    // 输出路径（拼接标签）
+                    string out;
+                    for (auto &pt : path) out += label(pt.r, pt.c);
+                    cout << out << "\n\n";
+                    found = true;
+                }
+            }
+        }
+        if (!found) {
+            cout << "impossible\n\n";
+        }
+    }
+    return 0;
+}
 ```
 
 
