@@ -1,13 +1,13 @@
 #  Problems in OJ, CF & others
 
-*Updated 2025-10-04 21:00 GMT+8*
+*Updated 2025-10-07 20:00 GMT+8*
  *Compiled by Hongfei Yan (2025 Fall)*
 
 
 
 > Logs:
 >
-> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】、【王乾旭 信科】、【刘思哲 25工学院】同学的CPP代码。
+> 2025/10/2: 加了些 数算 【张梓康 元培】、【潘彦璋 物院】、【李沁遥25医学预科办】、【王乾旭 信科】、【刘思哲 25工学院】、【张真铭25元陪】同学的CPP代码。
 >
 > 鉴于每学期都有同学偏好C++编程，本学期除维护Python题解外，也开始提供C++题解支持。
 
@@ -119,7 +119,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                                
+>                                                                   
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << setprecision(5) << pi << endl; // 输出 3.1416
@@ -136,7 +136,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                                
+>                                                                   
 >    int main() {
 >        double pi = 3.14159265358979;
 >        cout << fixed << setprecision(4) << pi << endl; // 输出 3.1416
@@ -153,7 +153,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                                
+>                                                                   
 >    int main() {
 >        int x = 42;
 >        cout << setw(5) << x << endl;  // 输出 "   42"（宽度为5）
@@ -172,7 +172,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                                
+>                                                                   
 >    int main() {
 >        cout << left << setw(10) << "Hello" << endl;  // 输出 "Hello     "
 >        cout << right << setw(10) << "Hello" << endl; // 输出 "     Hello"
@@ -187,7 +187,7 @@ int main() {
 >    #include <iostream>
 >    #include <iomanip>
 >    using namespace std;
->                                                                
+>                                                                   
 >    int main() {
 >        cout << setfill('*') << setw(10) << 42 << endl;  // 输出 "******42"
 >        return 0;
@@ -480,6 +480,8 @@ int main() {
 }
 
 ```
+
+
 
 
 
@@ -964,6 +966,62 @@ int main() {
 
 
 
+## E02753
+
+```cpp
+//dp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int input;
+        cin >> input;
+        if (input == 1 || input == 2)
+        {
+            cout << 1 << endl;
+            continue;
+        }
+        int a = 1, b = 1;
+        int tmp;
+        for (int i = 0; i < input - 2; i++)
+        {
+            tmp = a + b;
+            a = b;
+            b = tmp;
+        }
+        cout << b << endl;
+    }
+    return 0;
+}
+
+//math
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int input;
+        cin >> input;
+        cout << (1 / sqrt(5)) * (pow((1 + sqrt(5)) / 2, input) - pow((1 - sqrt(5)) / 2, input)) << endl;
+    }
+    return 0;
+}
+```
+
+
+
+
+
 ## 22359: Goldbach Conjecture
 
 http://cs101.openjudge.cn/practice/22359/
@@ -1355,6 +1413,53 @@ if __name__ == "__main__":
 
 
 
+### M01008: Maya Calendar
+
+implementation, http://cs101.openjudge.cn/practice/01008/
+
+思路：日期计算很简单，但是有个tricky的地方就是如果days中日期+1那么对于被260整除的数会计算成下一年。
+
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<string> Habb = {"pop", "no", "zip", "zotz", "tzec", "xul", "yoxkin", "mol", "chen", "yax", "zac", "ceh", "mac", "kankin", "muan", "pax", "koyab", "cumhu", "uayet"};
+    string Tzolkin[] = {"ahau", "imix", "ik", "akbal", "kan", "chicchan", "cimi", "manik", "lamat", "muluk", "ok", "chuen", "eb", "ben", "ix", "mem", "cib", "caban", "eznab", "canac"};
+    cout << n << endl;
+    for (int i = 0; i < n; i++)
+    {
+        int H_Year, H_Date;
+        string H_Month;
+        cin >> H_Date;
+        cin.ignore();
+        cin >> H_Month >> H_Year;
+        int days;
+        for (int i = 0; i < Habb.size(); i++)
+            if (Habb[i] == H_Month)
+            {
+                days = i * 20;
+                break;
+            }
+        days += H_Date + H_Year * 365;
+        int T_Year = days / 260;
+        string T_Month = Tzolkin[(days + 1) % 260 % 20];
+        int T_Date = days % 260 % 13 + 1;
+        cout << T_Date << ' ' << T_Month << ' ' << T_Year << endl;
+    }
+    return 0;
+}
+```
+
+
+
+
+
 ## M01017: 装箱问题
 
 greedy, http://cs101.openjudge.cn/pctbook/M01017/
@@ -1670,6 +1775,55 @@ int main() {
     return 0;
 }
 
+```
+
+
+
+## M02783: Holiday Hotel
+
+greedy, http://cs101.openjudge.cn/practice/02783/
+
+### 
+
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct Node
+{
+    int d, c;
+};
+
+bool cmp(Node a, Node b)
+{
+    if (a.c != b.c)
+        return a.c < b.c;
+    return a.d < b.d;
+}
+
+int main()
+{
+    int n;
+    while (scanf("%d", &n) && n)
+    {
+        Node hotel[10001];
+        for (int i = 0; i < n; i++)
+            scanf("%d%d", &hotel[i].d, &hotel[i].c);
+        sort(hotel, hotel + n, cmp);
+
+        int ans = 0;
+        int min_d = 1e9 + 1;
+        for (int i = 0; i < n; i++)
+            if (hotel[i].d < min_d)
+            {
+                ans++;
+                min_d = hotel[i].d;
+            }
+        printf("%d\n", ans);
+    }
+    return 0;
+}
 ```
 
 
@@ -2876,6 +3030,49 @@ int main()
 
 
 
+## 20B,Equation
+
+math, 2000, https://codeforces.com/problemset/problem/20/B
+
+
+
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    double a, b, c;
+    scanf("%lf%lf%lf", &a, &b, &c);
+    if (a == 0)
+    {
+        if (b == 0)
+            if (c == 0)
+                printf("-1\n");
+            else 
+                printf("0\n");
+        else
+            printf("1\n%lf\n", -c / b);
+        return 0;
+    }
+    double delta = b * b - 4 * a * c;
+    if (delta < 0)
+        printf("0\n");
+    else if (delta == 0)
+        printf("1\n%lf\n", -b / (2 * a));
+    else if (a > 0)
+        printf("2\n%lf\n%lf\n", (-b - sqrt(delta)) / (2 * a), (-b + sqrt(delta)) / (2 * a));
+    else
+        printf("2\n%lf\n%lf\n", (-b + sqrt(delta)) / (2 * a), (-b - sqrt(delta)) / (2 * a));
+    return 0;
+}
+```
+
+
+
+
+
 ## 34B. Sale
 
 greedy, sorting, 900, https://codeforces.com/problemset/problem/34/B
@@ -3304,6 +3501,102 @@ int main(){
         if(c*c==a && st.find(c)!=st.end()){cout<<"YES"<<'\n';}
         else {cout<<"NO"<<'\n';}
     }
+    return 0;
+}
+```
+
+
+
+
+
+
+
+## 313B
+
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    string str;
+    cin >> str;
+    int n;
+    cin >> n;
+    vector<int> pre(str.length(), 0);
+    for (int i = 1; i < str.length(); i++)
+        pre[i] = pre[i - 1] + (str[i] == str[i - 1] ? 1 : 0);
+    while (n--)
+    {
+        int l, r;
+        cin >> l >> r;
+        cout << pre[r - 1] - pre[l - 1] << endl;
+    }
+    return 0;
+}
+```
+
+
+
+
+
+## 339B Xenia and Ringroad
+
+implementation, 1000, https://codeforces.com/problemset/problem/339/B
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, m;
+    scanf("%d%d", &n, &m);
+    int curr = 1;
+    long long step = 0;
+    for (int i = 0; i < m; i++)
+    {
+        int a;
+        scanf("%d", &a);
+        if (curr <= a)
+            step += a - curr;
+        else
+            step += n - curr + a;
+        curr = a;
+    }
+    printf("%I64d\n", step);
+    return 0;
+}
+```
+
+
+
+## 508A
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int n, m, k;
+    scanf("%d%d%d", &n, &m, &k);
+    bool matrix[1002][1002] = {0};
+    for (int i = 0; i < k; i++)
+    {
+        int x, y;
+        scanf("%d%d", &x, &y);
+        matrix[x][y] = true;
+        if ((matrix[x + 1][y] && matrix[x + 1][y + 1] && matrix[x][y + 1]) || (matrix[x + 1][y] && matrix[x + 1][y - 1] && matrix[x][y - 1]) || (matrix[x][y + 1] && matrix[x - 1][y + 1] && matrix[x - 1][y]) || (matrix[x][y - 1] && matrix[x - 1][y - 1] && matrix[x - 1][y]))
+        {
+            cout << i + 1 << endl;
+            return 0;
+        }
+    }
+    cout << 0 << endl;
     return 0;
 }
 ```
