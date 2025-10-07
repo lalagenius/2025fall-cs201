@@ -1,5 +1,5 @@
 ## 2025fall 数算（DS Algo）每日选作
-*Updated 2025-10-06 23:08 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
+*Updated 2025-10-07 13:17 GMT+8*  *Compiled by Hongfei Yan (2025 Fall)*  
 https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.md
 
 题解在
@@ -19,6 +19,8 @@ https://github.com/GMyhf/2025fall-cs101/blob/main/ADS_problem_list_at_2025fall.m
 
 | 日期       | 问题编号与名称                 | 标签                                 | 难度 | 链接                                             |
 | ---------- | ------------------------------ | ------------------------------------ | ---- | ------------------------------------------------ |
+| 1008 |       |       | - |          |
+| 1008 |       |       | - |          |
 | 1007 | 138.随机链表的复制      | hashing, linked list       | Medium | https://leetcode.cn/problems/copy-list-with-random-pointer/          |
 | 1007 | 2.两数相加    | linked list  | Medium | https://leetcode.cn/problems/add-two-numbers/          |
 | 1006 | 25.K个一组翻转链表| linked list, recursion  | Tough | https://leetcode.cn/problems/reverse-nodes-in-k-group/          |
